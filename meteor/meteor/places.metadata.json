@@ -1,0 +1,1 @@
+{ "indexes" : [ { "v" : 1, "key" : { "_id" : 1 }, "ns" : "meteor.places", "name" : "_id_" }, { "v" : 1, "key" : { "loc" : "2d" }, "ns" : "meteor.places", "name" : "loc_2d", "safe" : true }, { "v" : 1, "key" : { "location" : "2d" }, "ns" : "meteor.places", "name" : "location_2d", "safe" : true } ] }

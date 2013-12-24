@@ -1,0 +1,17 @@
+<template name="placeShow">
+	{{#if isAdmin}}
+	<div class="row">
+		<div class="col-xs-12">
+			<div class="pull-right">
+				<a class="btn btn-default btn-sm" href="{{pathFor "placeEdit"}}">
+					<i class="fa fa-wrench fa-2x"></i>
+				</a>
+				<a id="remove" class="btn btn-warning btn-sm" href="#">
+					<i class="fa fa-times fa-2x"></i>
+				</a>
+			</div>
+		</div>
+	</div>
+	{{/if}}
+	<h2>{{name}}</h2>
+</template>

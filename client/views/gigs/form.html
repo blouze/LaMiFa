@@ -1,0 +1,42 @@
+<template name ="gigForm">
+	<form id="gigForm" class="form-horizontal col-sm-8 col-sm-offset-1" action="" method="POST" role="form">
+
+		<div class="form-group">
+			<label class="col-sm-2 control-label" for="datetime">Date&nbsp;:</label>
+			<div class="col-sm-6">
+				<div class="input-group">
+					<input type="text" class="form-control" id="datetime" readonly value="{{date_str}}">
+					<span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+				</div>
+			</div>
+		</div>
+
+		<div class="form-group">
+			<label class="col-sm-2 control-label" for="artist">Artiste&nbsp;:</label>
+			<div class="col-sm-8">
+				<input type="text" class="form-control" id="artist" placeholder="artiste" value="{{artist.name}}">
+			</div>
+		</div>
+
+		<div class="form-group">
+			<label class="col-sm-2 control-label" for="place">Lieu&nbsp;:</label>
+			<div class="col-sm-8">
+				<input type="text" class="form-control" id="place" placeholder="lieu" value="{{place.name}}">
+			</div>
+		</div>
+
+		<div class="form-group">
+			<label class="col-sm-2 control-label" for="facebook_id">Facebook&nbsp;:</label>
+			<div class="col-sm-8">
+				<input type="text" class="form-control" id="facebook_id" placeholder="facebook ID" value="{{facebook_id}}">
+			</div>
+		</div>
+
+		<br>
+
+		<div class="pull-right">
+			<button type="submit" class="btn btn-success"><i class="fa fa-floppy-o fa-lg"></i>&nbsp;&nbsp;Enregistrer</button>
+			<button type="button" id="cancel" class="btn btn-default">Annuler</button>
+		</div>
+	</form>
+</template>

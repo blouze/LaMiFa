@@ -1,0 +1,36 @@
+<template name="gigShow">
+	{{#if isAdmin}}
+	<div class="row">
+		<div class="col-xs-12">
+			<div class="pull-right">
+				<a class="btn btn-default btn-sm" href="{{pathFor "gigEdit"}}">
+					<i class="fa fa-wrench fa-2x"></i>
+				</a>
+				<a id="remove" class="btn btn-warning btn-sm" href="#">
+					<i class="fa fa-times fa-2x"></i>
+				</a>
+			</div>
+		</div>
+	</div>
+	{{/if}}
+
+	<div class="media">
+		<div class="row">
+			<img src="{{gigPicture}}" alt="" class="img-thumbnail media-object pull-left">
+			<div class="media-body col-sm-6 col-xs-12">
+				<blockquote>
+					<h3 class="media-heading">
+						{{#with artist}}
+						<a href="{{pathFor "artistShow"}}">{{name}}</a>
+						{{/with}}
+					</h3>
+					{{#with place}}
+					<a href="{{pathFor "placeShow"}}">{{name}}</a>
+					{{/with}}
+					<small>{{shortenedAdress place.location.Label}}</small>
+					{{calendar date}}
+				</blockquote>
+			</div>
+		</div>
+	</div>
+</template>

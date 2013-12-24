@@ -1,0 +1,13 @@
+{
+  "packages": {
+    "bootstrap-3": {},
+    "font-awesome-4": {},
+    "iron-router": {},
+    "parsleyjs": {},
+    "moment": {},
+    "bootstrap-datepicker2": {},
+    "leaflet-0.6.4": {},
+    "underscore-string-latest": {},
+    "bootstrap-datetimepicker": {}
+  }
+}

@@ -1,0 +1,1 @@
+Gigs._ensureIndex({ location : "2d" });

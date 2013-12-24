@@ -1,0 +1,1 @@
+Places._ensureIndex({ location : "2d" });

@@ -1,0 +1,36 @@
+<template name="artistShow">
+	{{#if isAdmin}}
+	<div class="row">
+		<div class="col-xs-12">
+			<div class="pull-right">
+				<a class="btn btn-default btn-sm" href="{{pathFor "artistEdit"}}">
+					<i class="fa fa-wrench fa-2x"></i>
+				</a>
+				<a id="remove" class="btn btn-warning btn-sm" href="#">
+					<i class="fa fa-times fa-2x"></i>
+				</a>
+			</div>
+		</div>
+	</div>
+	{{/if}}
+
+	<div class="media">
+		<div class="row">
+			<img src="{{artistPicture}}" alt="" class=" img-thumbnail media-object pull-right">
+			<div class="media-body col-sm-6 col-xs-12">
+				<blockquote>
+					<h2 class="media-heading">{{name}}</h2>
+				</blockquote>
+			</div>
+		</div>
+	</div>
+	<br>
+	<div class="list-group">
+		{{#each gigs}}
+		<a class="list-group-item" href="{{pathFor 'gigShow'}}">
+			&nbsp;
+			<strong class="pull-right">{{calendar date}}</strong>
+		</a>
+		{{/each}}
+	</div>
+</template>
