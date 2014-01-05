@@ -1,0 +1,17 @@
+<template name="user">
+	<div class="container">
+		<div class="row">
+			<img src="{{currentUserImage}}" alt="Image du profil" class="img-thumbnail">&nbsp;&nbsp;{{currentUser.profile.name}}
+			<div class="rateit"></div>
+			<button type="button" class="btn btn-success"><i class="fa fa-thumbs-up"></i>&nbsp;<strong>Je vote!</strong></button>
+			<div class="checkbox">
+				<small>
+					<label>
+						<input type="checkbox" value="" checked>
+						Publier sur mon mur
+					</label>
+				</small>
+			</div>
+		</div>
+	</div>
+</template>

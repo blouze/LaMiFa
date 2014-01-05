@@ -1,12 +1,10 @@
 Template.home.rendered = function () {
-	if (!Session.get("position")) {
-		if (navigator.geolocation)
-			navigator.geolocation.getCurrentPosition(function (position) {
-				Session.set("position", position.coords);
-			});
-		else
-			console.log("Geolocation is not supported by this browser.");
-	}
+	if (navigator.geolocation)
+		navigator.geolocation.getCurrentPosition(function (position) {
+			Session.set("position", position.coords);
+		});
+	else
+		console.log("Geolocation is not supported by this browser.");
 };
 
 Template.home.helpers({

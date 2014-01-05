@@ -7,6 +7,8 @@ html,
 body {
 	height: 100%;
 	/* The html and body elements cannot have any padding or margin. */
+	background-image: url("/img/grey.png");
+	background-repeat: repeat;
 }
 
 /* Wrapper for page content to push down footer */
@@ -48,10 +50,6 @@ code {
 	font-size: 80%;
 }
 
-
-.jumbotron {
-	margin-top: 30px;
-}
 
 #map { height: 380px; }
 

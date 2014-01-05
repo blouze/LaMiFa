@@ -1,6 +1,6 @@
 <head>
 	<title>LaMiFa</title>
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
 </head>
 
 <body>
@@ -9,93 +9,89 @@
 <template name="layout">
 	<div id="wrap"> 
 		{{>navbar}}
+
 		<div class="container">
 			{{yield}}
 		</div>
+
 		<div id="push"></div>
 	</div>
+
 	{{>footer}}
 </template>
 
 <template name="home">
+
 	{{#if matchGig}}
-	{{> gigItem matchGig}}
+	<div class="row">
+		<div class="container">
+			<div class="list-group">
+				{{> gigItem matchGig}}
+			</div>
+		</div>
+	</div>
 	<br>
 	{{/if}}
+
 	{{#unless currentUser}}
-	<div class="jumbotron">
-		<div class="container">
-			<div class="col-sm-5">
-				<h2>
-					<i class="icon-music"></i>
-					<strong>LaMiFa</strong>
-					<small style="vertical-align:top">(αlphα)</small><br>
-					<small><i>Soutenez les groupes que vous allez voir en votant pour eux!</i></small>
-				</h2>
-			</div>
-			<div class="col-sm-6">
-				<br>
-				<a class="btn btn-success" id="login" href="#">Connectez-vous avec Facebook</a>
-			</div>
-		</div>
+	<div class="jumbotron col-sm-11">
+		<h1>
+			<i class="icon-music"></i>
+			<strong>LaMiFa</strong>
+			<small style="vertical-align:top">(αlphα)</small><br>
+			<small><i>Votez pour des lendemains qui chantent.</i></small>&nbsp;
+		</h1>
+		<a class="btn btn-success" id="login" href="#">Connectez-vous avec Facebook</a>
 	</div>
+	<br>
 	{{else}}
-	{{#unless isAdmin}}
+
 	<div class="row">
-		<div class="col-sm-3 col-xs-offset-2">
-			<img src="{{currentUserImage}}" alt="Image du profil" class="img-thumbnail">&nbsp;&nbsp;{{currentUser.profile.name}}
-		</div>
-		<div class="col-sm-3 col-xs-offset-5">
-			<div class="checkbox">
-				<small>
-					<label>
-						<input type="checkbox" value="" checked>
-						Publier sur mon mur
-					</label>
-				</small>
+		<div class="container">
+			<div class="list-group">
+				{{#each gigs}}
+				{{> gigItem}}
+				{{/each}}
 			</div>
-			<button type="button" class="btn btn-success"><i class="fa fa-thumbs-up"></i>&nbsp;<strong>J'y suis, je kiffe!</strong></button>
 		</div>
 	</div>
 	<br>
-	{{else}}
-	<a type="button" class="btn btn-success" href="{{pathFor 'gigNew'}}"><i class="fa fa-plus"></i>&nbsp;&nbsp;<strong>Créer un évènement</strong></a>
-	<a type="button" class="btn btn-info" href="{{pathFor 'artistNew'}}"><i class="fa fa-plus"></i>&nbsp;&nbsp;<strong>Ajouter un artiste</strong></a>
-	<a type="button" class="btn btn-default" href="{{pathFor 'placeNew'}}"><i class="fa fa-plus"></i>&nbsp;&nbsp;<strong>Ajouter un lieu</strong></a>
-	<br>
-	<br>
-	{{/unless}}
-	<div class="list-group">
-		{{#each gigs}}
-		{{> gigItem}}
-		{{/each}}
+
+	<div class="row">
+		<div class="container">
+			<div class="list-group">
+				{{#each artists}}
+				<a class="list-group-item" href="{{pathFor 'artistShow'}}">{{name}}</a>
+				{{/each}}
+			</div>
+		</div>
 	</div>
-	<div class="list-group">
-		{{#each artists}}
-		<a class="list-group-item" href="{{pathFor 'artistShow'}}">{{name}}</a>
-		{{/each}}
-	</div>
+
 	{{#if isAdmin}}
-	<div class="list-group">
-		{{#each places}}
-		<a class="list-group-item" href="{{pathFor 'placeShow'}}">{{name}}</a>
-		{{/each}}
+	<div class="row">
+		<div class="container">
+			<div class="list-group">
+				{{#each places}}
+				<a class="list-group-item" href="{{pathFor 'placeShow'}}">{{name}}</a>
+				{{/each}}
+			</div>
+		</div>
 	</div>
 	{{/if}}
 	{{/unless}}
 </template>
 
 <template name="gigItem">
-	<a class="list-group-item" href="{{pathFor 'gigShow'}}">
+	<a class="list-group-item col-sm-8" href="{{pathFor 'gigShow'}}">
 		<div class="media">
-			<div class="pull-right">
+			<div class="pull-left">
 				<img src="{{gigThumbnail}}" alt="" class="media-object img-thumbnail"/>
 			</div>
 			<div class="media-body">
 				<blockquote>
 					<h4 class="media-heading"><strong>{{artist.name}}</strong></h4>
 					<small><strong>{{place.name}}</strong>, <i>{{city}}</i></small>
-					{{calendar date}}
+					<i class="fa fa-calendar"></i>&nbsp;&nbsp;{{calendar date}}
 				</blockquote>
 			</div>
 		</div>

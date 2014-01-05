@@ -15,22 +15,27 @@
 	{{/if}}
 
 	<div class="media">
-		<div class="row">
-			<img src="{{gigPicture}}" alt="" class="img-thumbnail media-object pull-left">
-			<div class="media-body col-sm-6 col-xs-12">
-				<blockquote>
-					<h3 class="media-heading">
-						{{#with artist}}
-						<a href="{{pathFor "artistShow"}}">{{name}}</a>
-						{{/with}}
-					</h3>
-					{{#with place}}
-					<a href="{{pathFor "placeShow"}}">{{name}}</a>
+		<img src="{{gigPicture}}" alt="" class="img-thumbnail media-object pull-left" style="margin-bottom:12px">
+		<div class="media-body col-sm-8 col-xs-12">
+			<blockquote>
+				<h2 class="media-heading">
+					{{#with artist}}
+					<a href="{{pathFor "artistShow"}}">{{name}}</a>
 					{{/with}}
-					<small>{{shortenedAdress place.location.Label}}</small>
-					{{calendar date}}
-				</blockquote>
-			</div>
+				</h2>
+				{{#with place}}
+				<a href="{{pathFor "placeShow"}}">{{name}}</a>
+				{{/with}}
+				<small>{{shortenedAdress place.location.Label}}</small>
+				{{calendar date}}
+			</blockquote>
 		</div>
 	</div>
+
+	{{#if currentUser}}
+	{{#unless isAdmin}}
+	<br>
+	{{>user}}
+	{{/unless}}
+	{{/if}}
 </template>

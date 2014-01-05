@@ -8,6 +8,7 @@
     "bootstrap-datepicker2": {},
     "leaflet-0.6.4": {},
     "underscore-string-latest": {},
-    "bootstrap-datetimepicker": {}
+    "bootstrap-datetimepicker": {},
+    "jquery-rateit": {}
   }
 }

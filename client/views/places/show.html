@@ -13,5 +13,23 @@
 		</div>
 	</div>
 	{{/if}}
-	<h2>{{name}}</h2>
+	<div class="media">
+		<div class="row">
+			<img src="{{artistPicture}}" alt="" class="img-thumbnail media-object pull-left" style="margin-bottom:12px">
+			<div class="media-body col-sm-8 col-xs-12">
+				<blockquote>
+					<h2 class="media-heading">{{name}}</h2>
+				</blockquote>
+			</div>
+		</div>
+	</div>
+	<br>
+	<div class="list-group">
+		{{#each gigs}}
+		<a class="list-group-item" href="{{pathFor 'gigShow'}}">
+			&nbsp;
+			<strong class="pull-right">{{calendar date}}</strong>
+		</a>
+		{{/each}}
+	</div>
 </template>

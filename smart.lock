@@ -10,7 +10,8 @@
       "bootstrap-datepicker2": {},
       "leaflet-0.6.4": {},
       "underscore-string-latest": {},
-      "bootstrap-datetimepicker": {}
+      "bootstrap-datetimepicker": {},
+      "jquery-rateit": {}
     },
     "packages": {
       "bootstrap-3": {
@@ -57,6 +58,11 @@
         "git": "https://github.com/Elfoslav/bootstrap-datetimepicker.git",
         "tag": "v0.0.6",
         "commit": "728e5d603c377652e6909e180358364c46ce95ff"
+      },
+      "jquery-rateit": {
+        "git": "https://github.com/dandv/meteor-jquery-rateit.git",
+        "tag": "v1.0.9",
+        "commit": "194607727589055e84cd4dfbb311d5a1bdadc6fe"
       }
     }
   }
