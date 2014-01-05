@@ -23,6 +23,7 @@
 <template name="home">
 
 	{{#if matchGig}}
+	<br>
 	<div class="row">
 		<div class="container">
 			<div class="list-group">
@@ -48,6 +49,9 @@
 
 	<div class="row">
 		<div class="container">
+			<div class="page-header">
+				<h3>Évènements à proximité</h3>
+			</div>
 			<div class="list-group">
 				{{#each gigs}}
 				{{> gigItem}}
@@ -59,6 +63,9 @@
 
 	<div class="row">
 		<div class="container">
+			<div class="page-header">
+				<h3>Artistes</h3>
+			</div>
 			<div class="list-group">
 				{{#each artists}}
 				<a class="list-group-item" href="{{pathFor 'artistShow'}}">{{name}}</a>
@@ -70,6 +77,9 @@
 	{{#if isAdmin}}
 	<div class="row">
 		<div class="container">
+			<div class="page-header">
+				<h3>Lieux</h3>
+			</div>
 			<div class="list-group">
 				{{#each places}}
 				<a class="list-group-item" href="{{pathFor 'placeShow'}}">{{name}}</a>
@@ -88,11 +98,15 @@
 				<img src="{{gigThumbnail}}" alt="" class="media-object img-thumbnail"/>
 			</div>
 			<div class="media-body">
-				<blockquote>
-					<h4 class="media-heading"><strong>{{artist.name}}</strong></h4>
-					<small><strong>{{place.name}}</strong>, <i>{{city}}</i></small>
-					<i class="fa fa-calendar"></i>&nbsp;&nbsp;{{calendar date}}
-				</blockquote>
+				<div class="container">
+					<div class="row">
+						<h4 class="media-heading col-sm-4">
+						<strong>{{artist.name}}</strong><br>
+							<small>{{place.name}}, <i>{{city}}</i></small>
+						</h4>
+						<span class="col-sm-2">{{calendar date}}</span>
+					</div>
+				</div>
 			</div>
 		</div>
 	</a>

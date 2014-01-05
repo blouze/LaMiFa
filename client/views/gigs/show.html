@@ -1,7 +1,7 @@
 <template name="gigShow">
-	{{#if isAdmin}}
 	<div class="row">
-		<div class="col-xs-12">
+		<div class="container">
+			{{#if isAdmin}}
 			<div class="pull-right">
 				<a class="btn btn-default btn-sm" href="{{pathFor "gigEdit"}}">
 					<i class="fa fa-wrench fa-2x"></i>
@@ -10,27 +10,37 @@
 					<i class="fa fa-times fa-2x"></i>
 				</a>
 			</div>
-		</div>
-	</div>
-	{{/if}}
+			{{/if}}
+			<img src="{{gigPicture}}" alt="" class="img-thumbnail media-object pull-left" style="margin-bottom:12px">
+			<div class="media-body col-sm-9 col-xs-12">
+				<div class="container">
+					<div class="row">
+						<h2 class="media-heading">
+							<i class="fa fa-calendar"></i>&nbsp;
+							{{#with artist}}
+							<a href="{{pathFor "artistShow"}}">{{name}}</a><br>
+							{{/with}}
+							<small>
+								<strong>
+									{{calendar date}}
+								</strong>
+								<br><br>
+								{{#with place}}
+								<a href="{{pathFor "placeShow"}}">{{name}}</a><br>
+								{{/with}}
+								{{shortenedAdress place.location.Label}}
+							</small>
+						</h2>
+					</div>
+				</div>
+			</div>
 
-	<div class="media">
-		<img src="{{gigPicture}}" alt="" class="img-thumbnail media-object pull-left" style="margin-bottom:12px">
-		<div class="media-body col-sm-8 col-xs-12">
-			<blockquote>
-				<h2 class="media-heading">
-					{{#with artist}}
-					<a href="{{pathFor "artistShow"}}">{{name}}</a>
-					{{/with}}
-				</h2>
-				{{#with place}}
-				<a href="{{pathFor "placeShow"}}">{{name}}</a>
-				{{/with}}
-				<small>{{shortenedAdress place.location.Label}}</small>
-				{{calendar date}}
-			</blockquote>
+
+
 		</div>
 	</div>
+	<br>
+
 
 	{{#if currentUser}}
 	{{#unless isAdmin}}

@@ -1,5 +1,6 @@
 Template.gigForm.helpers({
 	date_str: function () {
+		console.log();
 		var m = this.date ? moment.unix(this.date) : moment();
 		return m.format("DD/MM/YYYY");
 	}, 
@@ -13,14 +14,14 @@ Template.gigForm.helpers({
 
 Template.gigForm.rendered = function () {
 	$('#datetime').datetimepicker({
-    });
-    /*
+	});
+
 	$("#date").datepicker({
 		language: "fr", 
 		startDate: "today", 
-		autoclose: true
+		autoclose: false
 	});
-*/
+
 	$("#artist").typeahead({
 		source: _.pluck(Artists.find().fetch(), "name")
 	});
