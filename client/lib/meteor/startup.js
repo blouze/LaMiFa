@@ -58,4 +58,18 @@ moment.lang('fr', {
     }
 });
 
+
 Session.set("position", null);
+
+if (navigator.geolocation)
+	var watchId = navigator.geolocation.watchPosition(function (position) {
+		Session.set("userPosition", position.coords);
+	}, function () {
+		console.log("Sorry, no position available.");
+	}, {
+		enableHighAccuracy: true, 
+		timeout           : 30000, 
+		maximumAge        : 0
+	});
+else
+	console.log("Geolocation is not supported by this browser.");

@@ -48,12 +48,18 @@ markLocation = function (location) {
 		map.removeLayer(marker);
 
 	marker = L.marker([location.Y, location.X]).addTo(map);
-	setTimeout(function () {
-		marker.bindPopup(location.Label).openPopup();
-	}, 500);
 
-	var zoomLevel = (_(location.Label).strRightBack(", ") == "France") ? 10 : 16;
-	map.setView([location.Y, location.X], zoomLevel, {reset: true});
+	if (location.Label) {
+
+		setTimeout(function () {
+			marker.bindPopup(location.Label).openPopup();
+		}, 500);
+
+	}
+
+	var zoomLevel = (location.Label && _(location.Label).strRightBack(", ") == "France") ? 10 : 16;
+
+	map.setView([location.Y, location.X], zoomLevel, {reset: false});
 }
 
 

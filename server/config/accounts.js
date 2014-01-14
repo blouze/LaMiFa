@@ -3,7 +3,7 @@ Accounts.loginServiceConfiguration.remove({
 });
 
 //if(process.env.ROOT_URL == "http://lamifa.com/"){
-if(process.env.ROOT_URL == "http://localhost:3000/"){
+if(process.env.ROOT_URL == "http://local.lamifa.com:3000/"){
 	Accounts.loginServiceConfiguration.insert({
 		service: "facebook",
 		appId: "596394113731167",

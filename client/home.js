@@ -1,28 +1,58 @@
-Template.home.rendered = function () {
-	if (navigator.geolocation)
-		navigator.geolocation.getCurrentPosition(function (position) {
-			Session.set("position", position.coords);
+Template.userPositionMap.rendered = function () {
+	if (!this.mapInit) {
+		initMap({
+			minZoom: 5, 
+			maxZoom: 18, 
+			search: false
 		});
-	else
-		console.log("Geolocation is not supported by this browser.");
+		this.mapInit = true;
+	}
+
+	var position = Session.get("userPosition");
+	if (position) {
+		markLocation({
+			X: position.longitude, 
+			Y: position.latitude
+		});
+	}
 };
 
 Template.home.helpers({
 	matchGig: function () {
-		if (Session.get("position")) {
-			var position = Session.get("position");
-			var result = Gigs.findOne({
+		var position = Session.get("userPosition");
+		if (position) {
+			console.log(position);
+			var places = Places.find({
 				location: {
 					$near: [position.longitude, position.latitude], 
 					$maxDistance: 100
 				}
-			});
-			//console.log(result);
-			return result;
+			}, { limit: 1 });
+			if (places.count() > 0) {
+				var place_id = places.fetch()[0]._id;
+				console.log(place_id);
+				//return;
+				return Gigs.findOne({
+					place_id: place_id
+				});
+			}
 		}
 	}, 
 	gigs: function () {
-		return Gigs.find();
+		var position = Session.get("userPosition");
+		if (position) {
+			var places = _.pluck(Places.find({
+				location: {
+					$near: [position.longitude, position.latitude], 
+					$maxDistance: 100
+				}
+			}).fetch(), "_id");
+			console.log(places);
+			var result = Gigs.find({
+				place_id: { $in: places }
+			});
+			return result;
+		}
 	}, 
 	artists: function () {
 		return Artists.find();
@@ -56,8 +86,8 @@ Template.gigItem.helpers({
 	}, 
 	city: function () {
 		var place = Places.findOne({_id: this.place_id});
-		if (place.location)
-			return _.words(place.location.Label, ", ").slice(-1);
+		if (place && place.address)
+			return _.words(place.address, ", ").slice(-1);
 	}, 
 	gigThumbnail: function () {
 		return "http://graph.facebook.com/" + this.facebook_id + "/picture?type=square";

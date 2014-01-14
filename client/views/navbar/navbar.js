@@ -1,3 +1,9 @@
+Template.navbar.rendered = function () {
+	$(".nav li a:not(#dropdown-link)").on("click", function () {
+		$(".navbar-collapse.in").collapse("hide");
+	});
+};
+
 Template.navbar_user_logged_out.events({
 	'click #login': function (e, t) {
 		e.preventDefault();

@@ -14,11 +14,18 @@
 				<div class="col-sm-8">
 					{{#constant}}
 					<div id="map" />
-					{{/constant}}<br>
+					{{/constant}}
 				</div>
 			</div>
 
 			<input type="hidden" class="form-control" id="address" value="{{address}}">
+
+			<div class="form-group">
+				<label class="col-sm-4 control-label" for="facebook_id">Facebook Id&nbsp;:</label>
+				<div class="col-sm-8">
+					<input type="text" class="form-control" id="facebook_id" placeholder="Facebook Id" value="{{facebook_id}}">
+				</div>
+			</div>
 
 			<div class="pull-right">
 				<button type="submit" class="btn btn-success"><i class="fa fa-floppy-o fa-lg"></i>&nbsp;&nbsp;Enregistrer</button>

@@ -20,7 +20,12 @@
 				<ul class="nav navbar-nav">
 					<li class="{{active "about"}}"><a href="{{pathFor "about"}}">À propos ...</a></li>
 					{{#unless isAdmin}}
-					<li class="{{active "login"}}"><a href="{{pathFor "login"}}">Login</a></li>
+					<li class="{{active "login"}}">
+						<a href="{{pathFor "login"}}">
+							<i class="fa fa-lock">&nbsp;</i>
+							Login
+						</a>
+					</li>
 					{{/unless}}
 				</ul>
 				<ul class="nav navbar-nav navbar-right">
@@ -36,14 +41,25 @@
 </template>
 
 <template name="navbar_user_logged_in">
+	{{#if currentUser}}
+	{{#if isAdmin}}
 	<li class="dropdown">
-		<a class="btn btn-primary" data-toggle="dropdown" href="#" style="text-align:left"><i class="fa fa-plus"></i>&nbsp;&nbsp;Ajouter...</a>
+		<a id="dropdown-link" data-toggle="dropdown" href="#" style="text-align:left"><i class="fa fa-plus"></i>&nbsp;&nbsp;Ajouter...</a>
 		<ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
 			<li><a href="{{pathFor 'gigNew'}}">un évènement</a></li>
 			<li><a href="{{pathFor 'artistNew'}}">un artiste</a></li>
 			<li><a href="{{pathFor 'placeNew'}}">un lieu</a></li>
 		</ul>
 	</li>
+	{{else}}
+	<li>
+		<a href="#">
+			<i class="fa fa-user">&nbsp;</i>
+			{{currentUser.profile.name}}
+		</a>
+	</li>
+	{{/if}}
+	{{/if}}
 	<li>
 		<a id="logout" href="#">
 			<i class="fa fa-power-off">&nbsp;</i>

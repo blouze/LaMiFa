@@ -14,14 +14,12 @@ Template.placeForm.rendered = function () {
 		search: true
 	});
 
-	//Session.set("mapSearchLocation", null);
-
-	if (this.data.location && !Session.get("mapSearchLocation")) {
-		Session.set("mapSearchLocation", this.data.location);
-	}
-
-	if (location)
-		markLocation(location);
+	if (this.data.location && this.data.address)
+		markLocation({
+			X: this.data.location[1], 
+			Y: this.data.location[0], 
+			Label: this.data.address
+		});
 };
 
 Template.placeForm.events({
@@ -32,7 +30,7 @@ Template.placeForm.events({
 
 	"click #cancel": function (e, t) {
 		if (this._id) 
-			Router.go("placeShow", {_id: this._id});
+			Router.go("placeShow", { _id: this._id });
 		else
 			Router.go("home");
 	}, 
@@ -44,24 +42,28 @@ Template.placeForm.events({
 			var placeId = this._id;
 			Places.update({ _id: this._id }, { $set: {
 				name: t.find("#name").value, 
-				location: location
+				location: [location.X, location.Y] , 
+				address: location.Label, 
+				facebook_id: t.find("#facebook_id").value
 			} }, function (err) {
 				if (err) 
 					console.log(err);
 				else 
-					Router.go("placeShow", {_id: placeId});
+					Router.go("placeShow", { _id: placeId });
 			});
 		}
 		else {
 			Places.insert({
 				name: t.find("#name").value, 
-				location: location, 
+				location: [location.X, location.Y] , 
+				address: location.Label, 
+				facebook_id: t.find("#facebook_id").value, 
 				owner: Meteor.userId()
 			}, function (err, id) {
 				if (err) 
 					console.log(err);
 				else
-					Router.go("placeShow", {_id: id});
+					Router.go("placeShow", { _id: id });
 			});
 		}
 	}

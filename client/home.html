@@ -22,12 +22,19 @@
 
 <template name="home">
 
+	<div class="row">
+		{{>userPositionMap}}
+	</div>
+	<br>
+
 	{{#if matchGig}}
 	<br>
 	<div class="row">
 		<div class="container">
 			<div class="list-group">
-				{{> gigItem matchGig}}
+				{{#with matchGig}}
+				{{> gigItem}}
+				{{/with}}
 			</div>
 		</div>
 	</div>
@@ -91,21 +98,27 @@
 	{{/unless}}
 </template>
 
+<template name="userPositionMap">
+	<div class="col-xs-11">
+		{{#constant}}
+		<div id="map" />
+		{{/constant}}<br>
+	</div>
+</template>
+
 <template name="gigItem">
-	<a class="list-group-item col-sm-8" href="{{pathFor 'gigShow'}}">
-		<div class="media">
-			<div class="pull-left">
-				<img src="{{gigThumbnail}}" alt="" class="media-object img-thumbnail"/>
-			</div>
-			<div class="media-body">
-				<div class="container">
-					<div class="row">
-						<h4 class="media-heading col-sm-4">
+	<a class="list-group-item" href="{{pathFor 'gigShow'}}">
+		<div class="row">
+			<div class="media">
+				<div class="media-object col-sm-2 col-xs-3 pull-left">
+					<img src="{{gigThumbnail}}" alt="" class="img-rounded"/>
+				</div>
+				<div class="media-body">
+					<h4 class="media-heading col-sm-8">
 						<strong>{{artist.name}}</strong><br>
-							<small>{{place.name}}, <i>{{city}}</i></small>
-						</h4>
-						<span class="col-sm-2">{{calendar date}}</span>
-					</div>
+						<small>{{place.name}}, <i>{{city}}</i></small>
+					</h4>
+					<span class="col-sm-4">{{calendar date}}</span>
 				</div>
 			</div>
 		</div>

@@ -60,7 +60,6 @@ Template.gigForm.events({
 					date: moment(t.find("#date").value, "DD/MM/YYYY").unix(), 
 					artist_id: artist._id, 
 					place_id: place._id, 
-					location: [place.location.Y, place.location.X], 
 					facebook_id: t.find("#facebook_id").value
 				}
 			}, function (err, id) {

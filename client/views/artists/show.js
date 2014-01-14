@@ -3,7 +3,7 @@ Template.artistShow.helpers({
 		return Gigs.find({artist_id: this._id});
 	}, 
 	artistPicture: function () {
-		return "http://graph.facebook.com/" + this.facebook_id + "/picture?type=album";
+		return "http://graph.facebook.com/" + this.facebook_id + "/picture?type=normal";
 	}
 });
 

@@ -1,4 +1,4 @@
-Meteor.publish("gigs", function () {
+Meteor.publish("gigs", function (position) {
 	return Gigs.find();
 });
 

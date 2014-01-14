@@ -3,11 +3,12 @@ Handlebars.registerHelper("siteName", function () {
 });
 
 Handlebars.registerHelper("isAdmin", function () {
-	return Meteor.userId() && Meteor.user().services.password;
+	if (Meteor.user() && Meteor.user().services)
+		return Meteor.userId() && Meteor.user().services.password;
 });
 
 Handlebars.registerHelper("currentUserImage", function () {
-	if (Meteor.userId()) {
+	if (Meteor.user() && Meteor.user().services) {
 		if (Meteor.user().services.facebook) 
 			return "http://graph.facebook.com/" + Meteor.user().services.facebook.id + "/picture?type=square";
 	}

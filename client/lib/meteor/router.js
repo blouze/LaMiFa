@@ -9,7 +9,7 @@ Router.map(function () {
 
 	this.route("home", {
 		path: "/", 
-		before: function () {
+		waitOn: function () {
 			Meteor.subscribe("gigs");
 		}
 	});

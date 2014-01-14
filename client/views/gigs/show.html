@@ -11,32 +11,33 @@
 				</a>
 			</div>
 			{{/if}}
+			<div class="media">
 			<img src="{{gigPicture}}" alt="" class="img-thumbnail media-object pull-left" style="margin-bottom:12px">
-			<div class="media-body col-sm-9 col-xs-12">
-				<div class="container">
-					<div class="row">
-						<h2 class="media-heading">
-							<i class="fa fa-calendar"></i>&nbsp;
-							{{#with artist}}
-							<a href="{{pathFor "artistShow"}}">{{name}}</a><br>
-							{{/with}}
-							<small>
-								<strong>
+				<div class="media-body col-sm-9 col-xs-12">
+					<div class="container">
+						<div class="row">
+							<h2 class="media-heading">
+								{{#with artist}}
+								<a href="{{pathFor "artistShow"}}">{{name}}</a><br>
+								{{/with}}
+								<small>
+									<i class="fa fa-calendar"></i>&nbsp;
 									{{calendar date}}
-								</strong>
-								<br><br>
+								</small>
+							</h2>
+							<br>
+							<blockquote>
 								{{#with place}}
 								<a href="{{pathFor "placeShow"}}">{{name}}</a><br>
 								{{/with}}
-								{{shortenedAdress place.location.Label}}
-							</small>
-						</h2>
+								<small>
+									{{shortenedAdress place.address}}
+								</small>
+							</blockquote>
+						</div>
 					</div>
 				</div>
 			</div>
-
-
-
 		</div>
 	</div>
 	<br>
