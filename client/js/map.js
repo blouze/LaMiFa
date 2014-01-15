@@ -23,8 +23,8 @@ initMap = function (options) {
 
 		map.on("geosearch_foundlocations", function (loc) {
 			var location = loc.Locations[0];
+			//console.log(location);
 			Session.set("mapSearchLocation", location);
-			markLocation(location);
 			if (circle) 
 				circle.setLatLng(location);
 		});
@@ -43,6 +43,9 @@ mapLocate = function () {
 
 
 markLocation = function (location) {
+
+	if (!location)
+		return;
 
 	if (marker) 
 		map.removeLayer(marker);

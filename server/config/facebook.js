@@ -25,10 +25,22 @@ Facebook.prototype.getUserData = function() {
 	return this.query('me');
 }
 
+Facebook.prototype.getEventData = function(eventId) {
+	return this.query("/" + eventId);
+}
+
 Meteor.methods({
 	getUserData: function() {
+		if (Meteor.user().services.facebook) {
+			var fb = new Facebook(Meteor.user().services.facebook.accessToken);
+			var data = fb.getUserData();
+			return data;
+		}
+	}, 
+
+	getEventData: function(eventId) {
 		var fb = new Facebook(Meteor.user().services.facebook.accessToken);
-		var data = fb.getUserData();
+		var data = fb.getEventData(eventId);
 		return data;
 	}
 });

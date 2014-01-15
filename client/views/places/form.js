@@ -14,12 +14,10 @@ Template.placeForm.rendered = function () {
 		search: true
 	});
 
-	if (this.data.location && this.data.address)
-		markLocation({
-			X: this.data.location[1], 
-			Y: this.data.location[0], 
-			Label: this.data.address
-		});
+	if (location) {
+		console.log(location);
+		markLocation(location);
+	}
 };
 
 Template.placeForm.events({
@@ -39,10 +37,11 @@ Template.placeForm.events({
 		e.preventDefault();
 
 		if (this._id) {
+			console.log(location);
 			var placeId = this._id;
 			Places.update({ _id: this._id }, { $set: {
 				name: t.find("#name").value, 
-				location: [location.X, location.Y] , 
+				location: [location.Y, location.X] , 
 				address: location.Label, 
 				facebook_id: t.find("#facebook_id").value
 			} }, function (err) {
@@ -55,7 +54,7 @@ Template.placeForm.events({
 		else {
 			Places.insert({
 				name: t.find("#name").value, 
-				location: [location.X, location.Y] , 
+				location: [location.Y, location.X] , 
 				address: location.Label, 
 				facebook_id: t.find("#facebook_id").value, 
 				owner: Meteor.userId()

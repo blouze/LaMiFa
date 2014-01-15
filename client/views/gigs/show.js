@@ -7,6 +7,14 @@ Template.gigShow.helpers({
 	}, 
 	gigPicture: function () {
 		return "http://graph.facebook.com/" + this.facebook_id + "/picture?type=large";
+	}, 
+	artistThumbnail: function () {
+		var artist = Artists.findOne({_id: this.artist_id});
+		return "http://graph.facebook.com/" + artist.facebook_id + "/picture?type=square";
+	}, 
+	placeThumbnail: function () {
+		var place = Places.findOne({_id: this.place_id});
+		return "http://graph.facebook.com/" + place.facebook_id + "/picture?type=square";
 	}
 });
 

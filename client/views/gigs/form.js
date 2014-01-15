@@ -9,6 +9,15 @@ Template.gigForm.helpers({
 	}, 
 	place: function () {
 		return Places.findOne({_id: this.place_id});
+	}, 
+	fbEvent: function () {
+		console.log(Session.get("fbEvent"));
+		Meteor.call('getUserData', function(err, data) {
+			if (err)
+				console.log(err);
+			else
+				return data;
+		});
 	}
 });
 
@@ -43,8 +52,9 @@ Template.gigForm.events({
 		else
 			Router.go("home");
 	}, 
-	artist: function () {
-		return Artists.findOne({_id: this.artist_id});
+
+	"blur #facebook_id": function (e, t) {
+		Session.set("fbEvent", t.find("#facebook_id").value);
 	}, 
 
 	"submit #gigForm": function (e, t) {

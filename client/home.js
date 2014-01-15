@@ -21,17 +21,17 @@ Template.home.helpers({
 	matchGig: function () {
 		var position = Session.get("userPosition");
 		if (position) {
-			console.log(position);
 			var places = Places.find({
 				location: {
 					$near: [position.longitude, position.latitude], 
 					$maxDistance: 100
 				}
-			}, { limit: 1 });
-			if (places.count() > 0) {
+			});
+			console.log(places.fetch());
+			return;
+			if (places.count() > 0 && places.fetch()[0]) {
 				var place_id = places.fetch()[0]._id;
 				console.log(place_id);
-				//return;
 				return Gigs.findOne({
 					place_id: place_id
 				});
@@ -47,10 +47,10 @@ Template.home.helpers({
 					$maxDistance: 100
 				}
 			}).fetch(), "_id");
-			console.log(places);
+			//console.log(places);
 			var result = Gigs.find({
 				place_id: { $in: places }
-			});
+			}, { sort: { date: 1 }});
 			return result;
 		}
 	}, 
@@ -59,6 +59,9 @@ Template.home.helpers({
 	}, 
 	places: function () {
 		return Places.find();
+	}, 
+	matchPlaces: function () {
+		return matchPlaces(Session.get("userPosition"));
 	}
 });
 
@@ -66,7 +69,7 @@ Template.home.events({
 	"click #login": function (e, t) {
 		e.preventDefault();
 		Meteor.loginWithFacebook({
-			requestPermissions: ["email", "read_friendlists", "publish_actions"], 
+			requestPermissions: ["email", "user_events", "read_friendlists", "publish_actions"], 
 			forceApprovalPrompt: true
 		}, function (err) {
 			if (err) 

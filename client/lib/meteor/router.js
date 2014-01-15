@@ -10,7 +10,7 @@ Router.map(function () {
 	this.route("home", {
 		path: "/", 
 		waitOn: function () {
-			Meteor.subscribe("gigs");
+			Meteor.subscribe("places", Session.get("userPosition"));
 		}
 	});
 
@@ -74,7 +74,10 @@ Router.map(function () {
 	});
 
 	this.route("placeNew", {
-		path: "/place/new"
+		path: "/place/new", 
+		before: function () {
+			Session.set("mapSearchLocation", null);
+		}
 	});
 
 	this.route("placeShow", {
@@ -89,6 +92,15 @@ Router.map(function () {
 
 	this.route("placeEdit", {
 		path: "/place/:_id/edit", 
+		before: function () {
+			var place = Places.findOne({_id: this.params._id});
+			if (place)
+				Session.set("mapSearchLocation", {
+					X: place.location[1], 
+					Y: place.location[0], 
+					Label: place.address
+				});
+		}, 
 		waitOn: function () {
 			Meteor.subscribe("place", this.params._id);
 		}, 

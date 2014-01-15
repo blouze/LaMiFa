@@ -1,3 +1,3 @@
-Meteor.publish("places", function () {
+Meteor.publish("places", function (position) {
 	return Places.find();
 });
