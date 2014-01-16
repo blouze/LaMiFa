@@ -52,9 +52,6 @@ Router.map(function () {
 
 	this.route("artistShow", {
 		path: "/artist/:_id", 
-		before: function () {
-			Meteor.subscribe("gigs", {artist_id: this.params._id});
-		}, 
 		waitOn: function () {
 			Meteor.subscribe("artist", this.params._id);
 		}, 
@@ -92,20 +89,18 @@ Router.map(function () {
 
 	this.route("placeEdit", {
 		path: "/place/:_id/edit", 
-		before: function () {
-			var place = Places.findOne({_id: this.params._id});
-			if (place)
-				Session.set("mapSearchLocation", {
-					X: place.location[1], 
-					Y: place.location[0], 
-					Label: place.address
-				});
-		}, 
 		waitOn: function () {
 			Meteor.subscribe("place", this.params._id);
 		}, 
 		data: function () {
-			return Places.findOne({_id: this.params._id});
+			var place = Places.findOne({_id: this.params._id});
+			if (place)
+				Session.set("mapSearchLocation", {
+					X: place.location[0], 
+					Y: place.location[1], 
+					Label: place.address
+				});
+			return place;
 		}
 	});
 });

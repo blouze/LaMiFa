@@ -88,7 +88,7 @@
 				<h3>Lieux</h3>
 			</div>
 			<div class="list-group">
-				{{#each matchPlaces}}
+				{{#each places}}
 				<a class="list-group-item" href="{{pathFor 'placeShow'}}">{{name}}</a>
 				{{/each}}
 			</div>
@@ -118,7 +118,9 @@
 						<strong>{{artist.name}}</strong><br>
 						<small>{{place.name}}, <i>{{city}}</i></small>
 					</h4>
-					<span class="col-sm-4">{{calendar date}}</span>
+					<span class="col-sm-4">
+						<i class="fa fa-calendar"></i>&nbsp;&nbsp;{{calendar date}}
+					</span>
 				</div>
 			</div>
 		</div>

@@ -23,7 +23,7 @@ initMap = function (options) {
 
 		map.on("geosearch_foundlocations", function (loc) {
 			var location = loc.Locations[0];
-			//console.log(location);
+			console.log(location);
 			Session.set("mapSearchLocation", location);
 			if (circle) 
 				circle.setLatLng(location);

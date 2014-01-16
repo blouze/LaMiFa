@@ -11,32 +11,27 @@
 				</a>
 			</div>
 			{{/if}}
-			<div class="media">
-				<img src="{{gigPicture}}" alt="" class="img-thumbnail media-object pull-left" style="margin-bottom:12px">
-				<div class="media-body col-sm-7 col-xs-12">
-					<div class="container">
-						<div class="row">
-							<h2 class="media-heading">
-								{{#with artist}}
-								<a href="{{pathFor "artistShow"}}">{{name}}</a><br>
-								{{/with}}
-								<small>
-									<i class="fa fa-calendar"></i>&nbsp;
-									{{calendar date}}
-								</small>
-							</h2>
-							<br>
-							<blockquote>
-								{{#with place}}
-								<a href="{{pathFor "placeShow"}}">{{name}}</a><br>
-								{{/with}}
-								<small>
-									{{shortenedAdress place.address}}
-								</small>
-							</blockquote>
-						</div>
-					</div>
-				</div>
+			<img src="{{gigPicture}}" alt="" class="img-thumbnail media-object pull-left" style="margin-bottom:12px">
+			<div class="media-body col-sm-7 col-xs-12">
+				<h2 class="media-heading">
+					{{#with artist}}
+					<a href="{{pathFor "artistShow"}}">{{name}}</a><br>
+					{{/with}}
+				</h2>
+				<blockquote>
+					{{#with place}}
+					<a href="{{pathFor "placeShow"}}">{{name}}</a><br>
+					{{/with}}
+					<small>
+						<i class="fa fa-map-marker"></i>&nbsp;
+						{{shortenedAdress place.address}}
+					</small>
+					<br>
+					<p>
+						<i class="fa fa-calendar"></i>&nbsp;
+						{{calendar date}}
+					</p>
+				</blockquote>
 			</div>
 		</div>
 	</div>

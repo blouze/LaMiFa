@@ -17,51 +17,36 @@ Template.userPositionMap.rendered = function () {
 	}
 };
 
+Template.home.rendered = function () {
+};
+
 Template.home.helpers({
 	matchGig: function () {
-		var position = Session.get("userPosition");
-		if (position) {
-			var places = Places.find({
-				location: {
-					$near: [position.longitude, position.latitude], 
-					$maxDistance: 100
-				}
+		var place = matchPlace(Session.get("userPosition"));
+		if (place)
+			return Gigs.findOne({
+				place_id: place._id
 			});
-			console.log(places.fetch());
-			return;
-			if (places.count() > 0 && places.fetch()[0]) {
-				var place_id = places.fetch()[0]._id;
-				console.log(place_id);
-				return Gigs.findOne({
-					place_id: place_id
-				});
-			}
-		}
 	}, 
 	gigs: function () {
-		var position = Session.get("userPosition");
-		if (position) {
-			var places = _.pluck(Places.find({
-				location: {
-					$near: [position.longitude, position.latitude], 
-					$maxDistance: 100
-				}
-			}).fetch(), "_id");
-			//console.log(places);
-			var result = Gigs.find({
-				place_id: { $in: places }
-			}, { sort: { date: 1 }});
-			return result;
-		}
+		var place_ids = _.pluck(Places.find().fetch(), "_id");
+		var result = Gigs.find({
+			place_id: { $in: place_ids }
+		}, { sort: { date: 1 }});
+		return result;
 	}, 
 	artists: function () {
 		return Artists.find();
 	}, 
 	places: function () {
-		return Places.find();
-	}, 
-	matchPlaces: function () {
-		return matchPlaces(Session.get("userPosition"));
+		var places = Places.find({
+			location: {
+				$near: [Session.get("userPosition").longitude, Session.get("userPosition").latitude], 
+				$maxDistance: 100
+			}
+		});
+		console.log(places.fetch());
+		return places;
 	}
 });
 
