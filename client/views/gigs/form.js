@@ -22,14 +22,7 @@ Template.gigForm.helpers({
 });
 
 Template.gigForm.rendered = function () {
-	$('#datetime').datetimepicker({
-	});
-
-	$("#date").datepicker({
-		language: "fr", 
-		startDate: "today", 
-		autoclose: false
-	});
+	$("#date").datetimepicker();
 
 	$("#artist").typeahead({
 		source: _.pluck(Artists.find().fetch(), "name")
@@ -67,9 +60,9 @@ Template.gigForm.events({
 		if (gig) 
 			Gigs.update({_id: this._id}, {
 				$set: {
-					date: moment(t.find("#date").value, "DD/MM/YYYY").unix(), 
 					artist_id: artist._id, 
 					place_id: place._id, 
+					date: moment(t.find("#date").value, "DD/MM/YYYY").unix(), 
 					facebook_id: t.find("#facebook_id").value
 				}
 			}, function (err, id) {

@@ -7,12 +7,12 @@
       "iron-router": {},
       "parsleyjs": {},
       "moment": {},
-      "bootstrap-datepicker2": {},
       "leaflet-0.6.4": {},
       "underscore-string-latest": {},
-      "bootstrap-datetimepicker": {},
       "jquery-rateit": {},
-      "npm": {}
+      "npm": {},
+      "Bootstrap3-Typeahead": {},
+      "bootstrap3-datetimepicker": {}
     },
     "packages": {
       "bootstrap-3": {
@@ -40,11 +40,6 @@
         "tag": "v2.2.1",
         "commit": "9ee12e714afe56b189f53076447b7b54f3012065"
       },
-      "bootstrap-datepicker2": {
-        "git": "https://github.com/deepwell/meteor-bootstrap-datepicker.git",
-        "tag": "v1.2.0",
-        "commit": "b7de18a7cc651ea665cda75048663f90d1a11d10"
-      },
       "leaflet-0.6.4": {
         "git": "https://github.com/Ore4444/meteor-leaflet.git",
         "tag": "v0.0.1",
@@ -55,11 +50,6 @@
         "tag": "v2.3.3",
         "commit": "4a5d70eee48fbd90a6e6fc78747250d704a0b3bb"
       },
-      "bootstrap-datetimepicker": {
-        "git": "https://github.com/Elfoslav/bootstrap-datetimepicker.git",
-        "tag": "v0.0.6",
-        "commit": "728e5d603c377652e6909e180358364c46ce95ff"
-      },
       "jquery-rateit": {
         "git": "https://github.com/dandv/meteor-jquery-rateit.git",
         "tag": "v1.0.9",
@@ -69,6 +59,16 @@
         "git": "https://github.com/arunoda/meteor-npm.git",
         "tag": "v0.2.6",
         "commit": "177ab6118de5bf8cffb19481343d5762ff7a2aaf"
+      },
+      "Bootstrap3-Typeahead": {
+        "git": "https://github.com/JustinSGray/meteor-Bootstrap-3-Typeahead.git",
+        "tag": "v0.1.1",
+        "commit": "770b69d73e559c9f6506daa0a034acab21169479"
+      },
+      "bootstrap3-datetimepicker": {
+        "git": "https://github.com/tsega/meteor-bootstrap3-datetimepicker.git",
+        "tag": "v0.0.5",
+        "commit": "30b5fa0759f98b75761772ad891876408f7cc8c4"
       }
     }
   }

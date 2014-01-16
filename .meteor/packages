@@ -12,11 +12,9 @@ font-awesome-4
 iron-router
 parsleyjs
 accounts-password
-moment
-bootstrap-datepicker2
 leaflet-0.6.4
 underscore-string-latest
-Bootstrap3-Typeahead
-bootstrap-datetimepicker
 jquery-rateit
 npm
+Bootstrap3-Typeahead
+bootstrap3-datetimepicker

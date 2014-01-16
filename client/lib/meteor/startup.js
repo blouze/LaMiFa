@@ -58,7 +58,6 @@ moment.lang('fr', {
     }
 });
 
-
 Session.set("position", null);
 
 if (navigator.geolocation)
