@@ -23,10 +23,7 @@
 	<br>
 	<div class="list-group">
 		{{#each gigs}}
-		<a class="list-group-item" href="{{pathFor 'gigShow'}}">
-			&nbsp;
-			<strong class="pull-right">{{calendar date}}</strong>
-		</a>
+		{{> gigItem}}
 		{{/each}}
 	</div>
 </template>

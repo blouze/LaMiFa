@@ -5,11 +5,11 @@
     "iron-router": {},
     "parsleyjs": {},
     "moment": {},
-    "bootstrap-datepicker2": {},
     "leaflet-0.6.4": {},
     "underscore-string-latest": {},
-    "bootstrap-datetimepicker": {},
     "jquery-rateit": {},
-    "npm": {}
+    "npm": {},
+    "Bootstrap3-Typeahead": {},
+    "bootstrap3-datetimepicker": {}
   }
 }

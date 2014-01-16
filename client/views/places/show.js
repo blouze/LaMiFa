@@ -1,6 +1,6 @@
 Template.placeShow.helpers({
-	place: function () {
-		return Places.findOne({_id: this.place_id});
+	gigs: function () {
+		return Gigs.find({ place_id: this._id }, { sort: { date: 1 } });
 	}, 
 	placePicture: function () {
 		return "http://graph.facebook.com/" + this.facebook_id + "/picture?type=large";

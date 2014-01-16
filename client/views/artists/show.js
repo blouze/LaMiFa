@@ -1,6 +1,6 @@
 Template.artistShow.helpers({
 	gigs: function () {
-		return Gigs.find({artist_id: this._id});
+		return Gigs.find({ artist_id: this._id }, { sort: { date: 1 } });
 	}, 
 	artistPicture: function () {
 		return "http://graph.facebook.com/" + this.facebook_id + "/picture?type=normal";

@@ -40,6 +40,8 @@ Router.map(function () {
 		path: "/gig/:_id/edit", 
 		waitOn: function () {
 			Meteor.subscribe("gig", this.params._id);
+			Meteor.subscribe("artistes");
+			Meteor.subscribe("places");
 		}, 
 		data: function () {
 			return Gigs.findOne({_id: this.params._id});
