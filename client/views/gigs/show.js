@@ -15,6 +15,12 @@ Template.gigShow.helpers({
 	placeThumbnail: function () {
 		var place = Places.findOne({_id: this.place_id});
 		return "http://graph.facebook.com/" + place.facebook_id + "/picture?type=square";
+	}, 
+	userHasVoted: function () {
+		return Meteor.userId() && Votes.findOne({
+			user_id: Meteor.userId(), 
+			gig_id: this._id
+		})
 	}
 });
 

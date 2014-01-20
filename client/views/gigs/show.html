@@ -41,7 +41,18 @@
 	{{#if currentUser}}
 	{{#unless isAdmin}}
 	<br>
-	{{>user}}
+	<div class="row">
+		<div class="container">
+			{{>userProfile}}
+			{{#unless userHasVoted}}
+			{{>userVote}}
+			{{else}}
+			<p>Vous avez voté.</p>
+			<p>Poster un message.</p>
+			<p>Poster une photo.</p>
+			{{/unless}}
+		</div>
+	</div>
 	{{/unless}}
 	{{/if}}
 </template>
