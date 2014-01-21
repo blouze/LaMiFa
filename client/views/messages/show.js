@@ -1,16 +1,13 @@
 Template.message.helpers({
-	user: function () {
-		console.log(this.owner)
-		return Meteor.users.find({ _id: this.owner});
+	owner: function () {
+		return Meteor.users.findOne({ _id: this.owner});
 	}, 
 
-	userPicture: function () {
-		var user = Meteor.users.find({ _id: this.owner});
-		console.log(this.user)
-		if (user && user.services) {
-			console.log("http://graph.facebook.com/" + user.services.facebook.id + "/picture?type=square");
-			if (user.services.facebook) 
-				return "http://graph.facebook.com/" + user.services.facebook.id + "/picture?type=square";
+	ownerPicture: function () {
+		var owner = Meteor.users.findOne({ _id: this.owner});
+		if (owner && owner.services) {
+			if (owner.services.facebook) 
+				return "http://graph.facebook.com/" + owner.services.facebook.id + "/picture?type=square";
 		}
 	}
 });

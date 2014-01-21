@@ -1,15 +1,19 @@
 <template name="message">
-	<div class="row">
-		<div class="media">
-			<div class="media-object col-sm-2 col-xs-3 pull-left">
-				<img src="{{this.userPicture}}" alt="" class="img-rounded"/>
-			</div>
-			<div class="media-body">
-				<h4 class="media-heading col-sm-8">
-					<strong>{{this.user.name}}</strong><br>
-					<small><i>{{content}}</i></small>
-				</h4>
-			</div>
+	<div class="media">
+		<div class="media-object pull-left">
+			<img src="{{ownerPicture}}" alt="" class="img-rounded"/>
+		</div>
+		<div class="media-body">
+			<h5 class="media-heading">
+				<blockquote>
+					{{content}}<br>
+					<small>
+						{{#with owner}}
+						<a href="{{pathFor 'userShow'}}"><i>{{profile.name}}</i></a>
+						{{/with}}
+					</small>
+				</blockquote>
+			</h5>
 		</div>
 	</div>
 </template>

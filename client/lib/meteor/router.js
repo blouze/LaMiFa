@@ -105,4 +105,14 @@ Router.map(function () {
 			return place;
 		}
 	});
+
+	this.route("userShow", {
+		path: "/user/:_id", 
+		waitOn: function () {
+			Meteor.subscribe("user", this.params._id);
+		}, 
+		data: function () {
+			return Meteor.users.findOne({_id: this.params._id});
+		}
+	});
 });

@@ -1,3 +1,12 @@
+Template.userProfile.helpers({
+	userHasVoted: function () {
+		return Meteor.userId() && Votes.findOne({
+			user_id: Meteor.userId(), 
+			gig_id: this._id
+		})
+	}
+});
+
 Template.userVote.rendered = function () {
 	$('.rateit').rateit()
 };

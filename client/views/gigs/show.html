@@ -35,31 +35,35 @@
 			</div>
 		</div>
 	</div>
+
 	<br>
 
-	{{#if messages}}
-	{{#each messages}}
-	{{>message}}
-	{{/each}}
-	{{/if}}
-
+	<div class="row">
+		<div class="container">
+			{{#if messages.count}}
+			<div class="page-header">
+				<h3>Commentaires :</h3>
+			</div>
+			<div class="list-group">
+				{{#each messages}}
+				{{>message}}
+				{{/each}}
+			</div>
+			{{else}}
+			<small>Aucun commentaire pour cet évènement.</small>
+			{{/if}}
+		</div>
+	</div>
 
 	{{#if currentUser}}
 	{{#unless isAdmin}}
 	<br>
 	<div class="row">
 		<div class="container">
+			<div class="page-header">
+				<h3>Exprimez-vous !</h3>
+			</div>
 			{{>userProfile}}
-			{{#unless userHasVoted}}
-			{{>userVote}}
-			{{else}}
-			<p>
-				<strong>Merci d'avoir voté!</strong>
-			</p>
-			{{>messageModal}}
-			<button type="button" class="btn btn-default" data-toggle="modal" data-target="#messageModal"><i class="fa fa-pencil-square-o"></i>&nbsp;&nbsp;<strong>Poster un message<strong></button>
-			<button type="button" class="btn btn-primary" id="postPicture"><i class="fa fa-camera"></i>&nbsp;&nbsp;<strong>Poster une photo<strong></button>
-			{{/unless}}
 		</div>
 	</div>
 	{{/unless}}
