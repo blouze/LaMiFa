@@ -38,5 +38,23 @@ Template.gigShow.events({
 				else
 					Router.go("home");
 			});
+	}, 
+
+	"click button#postMessage": function (e, t) {
+
+	}, 
+
+	"click button#postPicture": function (e, t) {
+		filepicker.pick({
+			mimetypes: ['image/*'],
+			container: 'modal',
+			services:['COMPUTER'],
+		},
+		function(InkBlob){
+			console.log(JSON.stringify(InkBlob));
+		},
+		function(FPError){
+			console.log(FPError.toString());
+		});
 	}
 });

@@ -10,6 +10,7 @@
     "jquery-rateit": {},
     "npm": {},
     "Bootstrap3-Typeahead": {},
-    "bootstrap3-datetimepicker": {}
+    "bootstrap3-datetimepicker": {},
+    "filepicker": {}
   }
 }

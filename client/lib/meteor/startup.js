@@ -72,3 +72,5 @@ if (navigator.geolocation)
 	});
 else
 	console.log("Geolocation is not supported by this browser.");
+
+filepicker.setKey('A6uyubo4LT5eNfQ2ofok6z');

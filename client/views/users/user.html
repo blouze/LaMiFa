@@ -3,20 +3,19 @@
 		<img src="{{currentUserImage}}" alt="Image du profil" class="img-rounded pull-left">
 		<div class="media-body">
 			<h4 class="media-heading">{{currentUser.profile.name}}</h4>
-			<div class="input-group">
-				<label>
-					<input type="checkbox" value="">
-					<small>
-						Publier sur mon mur
-					</small>
-				</label>
-			</div>
 		</div>
-		<br>
 	</div>
 </template>
 <template name="userVote">
-	<div class="rateit" data-rateit-value="3"></div>&nbsp;&nbsp;
+	<div class="input-group">
+		<label>
+			<input type="checkbox" value="">
+			<small>
+				Publier sur mon mur
+			</small>
+		</label>
+		<div class="rateit" data-rateit-value="3"></div>&nbsp;&nbsp;
+	</div>
 	<button type="button" class="btn btn-primary" id="vote"><i class="fa fa-thumbs-up"></i>&nbsp;<strong>Voter</strong></button>
 	<div class="col-xs-6">
 	</div>

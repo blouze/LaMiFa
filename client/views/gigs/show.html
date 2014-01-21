@@ -47,9 +47,11 @@
 			{{#unless userHasVoted}}
 			{{>userVote}}
 			{{else}}
-			<p>Vous avez voté.</p>
-			<p>Poster un message.</p>
-			<p>Poster une photo.</p>
+			<p>
+				<strong>Merci d'avoir voté!</strong>
+			</p>
+			<button type="button" class="btn btn-default" id="postMessage"><i class="fa fa-pencil-square-o"></i>&nbsp;&nbsp;<strong>Poster un message<strong></button>
+			<button type="button" class="btn btn-primary" id="postPicture"><i class="fa fa-camera"></i>&nbsp;&nbsp;<strong>Poster une photo<strong></button>
 			{{/unless}}
 		</div>
 	</div>

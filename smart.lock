@@ -12,7 +12,8 @@
       "jquery-rateit": {},
       "npm": {},
       "Bootstrap3-Typeahead": {},
-      "bootstrap3-datetimepicker": {}
+      "bootstrap3-datetimepicker": {},
+      "filepicker": {}
     },
     "packages": {
       "bootstrap-3": {
@@ -69,6 +70,11 @@
         "git": "https://github.com/tsega/meteor-bootstrap3-datetimepicker.git",
         "tag": "v0.0.5",
         "commit": "30b5fa0759f98b75761772ad891876408f7cc8c4"
+      },
+      "filepicker": {
+        "git": "https://github.com/Ink/meteor.git",
+        "tag": "v0.4.0",
+        "commit": "20d56aaaf48be3a5c0499547a495a6463b4fa3d9"
       }
     }
   }
