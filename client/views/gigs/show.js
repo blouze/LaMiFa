@@ -5,6 +5,9 @@ Template.gigShow.helpers({
 	place: function () {
 		return Places.findOne({_id: this.place_id});
 	}, 
+	messages: function () {
+		return Messages.find({gig_id: this._id});
+	}, 
 	gigPicture: function () {
 		return "http://graph.facebook.com/" + this.facebook_id + "/picture?type=large";
 	}, 
@@ -41,7 +44,21 @@ Template.gigShow.events({
 	}, 
 
 	"click button#postMessage": function (e, t) {
-
+		Messages.insert({
+			owner: Meteor.userId(), 
+			gig_id: this._id, 
+			content: t.find("#message").value
+		}, function (err, id) {
+			if (err) 
+				console.log(err);
+			else
+				console.log(id);
+		});
+	}, 
+	
+	"keypress #messageForm": function (e, t) {
+		if (e.which === 13)
+			return false;
 	}, 
 
 	"click button#postPicture": function (e, t) {

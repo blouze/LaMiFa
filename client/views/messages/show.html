@@ -1,0 +1,15 @@
+<template name="message">
+	<div class="row">
+		<div class="media">
+			<div class="media-object col-sm-2 col-xs-3 pull-left">
+				<img src="{{this.userPicture}}" alt="" class="img-rounded"/>
+			</div>
+			<div class="media-body">
+				<h4 class="media-heading col-sm-8">
+					<strong>{{this.user.name}}</strong><br>
+					<small><i>{{content}}</i></small>
+				</h4>
+			</div>
+		</div>
+	</div>
+</template>
