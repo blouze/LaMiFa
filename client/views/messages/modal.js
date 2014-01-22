@@ -6,17 +6,6 @@ Template.messageModal.rendered = function () {
 };
 
 Template.messageModal.events({
-	"click :submit": function (e, t) {
-		$(this).find("#messageForm").submit();
-	}, 
-	
-	"keypress #messageForm": function (e, t) {
-		if (e.which === 13) {
-			$(this).find("#messageForm").submit();
-			return false;
-		}
-	}, 
-	
 	"submit #messageForm": function (e, t) {
 		e.preventDefault();
 		Messages.insert({
@@ -27,7 +16,7 @@ Template.messageModal.events({
 			if (err) 
 				console.log(err);
 			else
-				console.log(id);
+				$("#messageModal").modal("hide");
 		});
 	}
 });
