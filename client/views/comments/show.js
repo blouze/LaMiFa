@@ -1,4 +1,4 @@
-Template.message.helpers({
+Template.comment.helpers({
 	owner: function () {
 		return Meteor.users.findOne({ _id: this.owner});
 	}, 

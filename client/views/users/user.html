@@ -12,7 +12,7 @@
 						<strong>Merci d'avoir voté !</strong>
 					</p>
 					{{>userActions}}
-					{{>messageModal}}
+					{{>commentModal}}
 					{{else}}
 					{{>userVote}}
 					{{/if}}
@@ -36,6 +36,6 @@
 </template>
 
 <template name="userActions">
-	<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#messageModal"><i class="fa fa-pencil-square-o"></i>&nbsp;&nbsp;<strong>Poster un message<strong></button>
+	<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#commentModal"><i class="fa fa-pencil-square-o"></i>&nbsp;&nbsp;<strong>Poster un commentaire<strong></button>
 	<button type="button" class="btn btn-default" id="postPicture"><i class="fa fa-camera"></i>&nbsp;&nbsp;<strong>Poster une photo<strong></button>
 </template>
