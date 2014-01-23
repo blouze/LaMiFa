@@ -4,21 +4,19 @@
 			<img src="{{ownerPicture}}" alt=""/>
 		</div>
 		<div class="media-body">
-			<h5 class="media-heading">
-				<blockquote>
-					{{#if isComment}}
-					{{content}}<br>
-					{{/if}}
-					{{#if isPicture}}
-					<img src="{{content}}" alt="">
-					{{/if}}
-					<small>
-						{{#with owner}}
-						<a href="{{pathFor 'userShow'}}"><i>{{profile.name}}</i></a>
-						{{/with}}
-					</small>
-				</blockquote>
-			</h5>
+			<blockquote>
+				{{#if isComment}}
+				"{{content}}"
+				{{/if}}
+				{{#if isPicture}}
+				<img src="{{content}}" alt="">
+				{{/if}}
+				{{#with owner}}
+				<small class="">
+					<a href="{{pathFor 'userShow'}}"><i>{{profile.name}}</i></a>, {{timeAgo}}.
+				</small>
+				{{/with}}
+			</blockquote>
 		</div>
 	</div>
 </template>

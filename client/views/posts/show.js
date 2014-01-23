@@ -10,6 +10,10 @@ Template.post.helpers({
 				return "http://graph.facebook.com/" + owner.services.facebook.id + "/picture?type=square";
 		}
 	}, 
+	timeAgo: function () {
+		console.log(moment(this.time));
+		return moment(this.time).format("DD/MM/YY HH:mm");
+	}, 
 	
 	isComment: function () {
 		return this.type == "comment";

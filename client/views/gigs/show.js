@@ -6,7 +6,7 @@ Template.gigShow.helpers({
 		return Places.findOne({_id: this.place_id});
 	}, 
 	posts: function () {
-		return Posts.find({gig_id: this._id});
+		return Posts.find({gig_id: this._id}, {sort: {time: -1}});
 	}, 
 	gigPicture: function () {
 		return "http://graph.facebook.com/" + this.facebook_id + "/picture?type=large";
@@ -38,13 +38,27 @@ Template.gigShow.events({
 	}, 
 
 	"click button#postPicture": function (e, t) {
+		var gig_id = this._id;
 		filepicker.pick({
 			mimetypes: ['image/*'],
 			container: 'modal',
 			services:['COMPUTER'],
 		},
 		function(InkBlob){
-			console.log(JSON.stringify(InkBlob));
+			var inkBlob = JSON.stringify(InkBlob);
+			console.log(InkBlob);
+			console.log(InkBlob.url);
+			Posts.insert({
+				owner: Meteor.userId(), 
+				gig_id: gig_id, 
+				type: "picture", 
+				content: InkBlob.url 
+			}, function (err, id) {
+				if (err) 
+					console.log(err);
+				else
+					console.log(id);
+			});
 		},
 		function(FPError){
 			console.log(FPError.toString());
