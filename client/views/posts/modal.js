@@ -8,10 +8,11 @@ Template.commentModal.rendered = function () {
 Template.commentModal.events({
 	"submit #commentForm": function (e, t) {
 		e.preventDefault();
-		Comments.insert({
+
+		Posts.insert({
 			owner: Meteor.userId(), 
 			gig_id: this._id, 
-//			type: "comment", 
+			type: "comment", 
 			content: t.find("#comment").value
 		}, function (err, id) {
 			if (err) 

@@ -5,8 +5,8 @@ Template.gigShow.helpers({
 	place: function () {
 		return Places.findOne({_id: this.place_id});
 	}, 
-	comments: function () {
-		return Comments.find({gig_id: this._id});
+	posts: function () {
+		return Posts.find({gig_id: this._id});
 	}, 
 	gigPicture: function () {
 		return "http://graph.facebook.com/" + this.facebook_id + "/picture?type=large";

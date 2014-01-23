@@ -40,13 +40,13 @@
 
 	<div class="row">
 		<div class="container">
-			{{#if comments.count}}
+			{{#if posts.count}}
 			<div class="page-header">
 				<h3>Soumis par le public :</h3>
 			</div>
 			<div class="list-group">
-				{{#each comments}}
-				{{>comment}}
+				{{#each posts}}
+				{{>post}}
 				{{/each}}
 			</div>
 			{{else}}

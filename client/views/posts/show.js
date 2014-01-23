@@ -1,4 +1,4 @@
-Template.comment.helpers({
+Template.post.helpers({
 	owner: function () {
 		return Meteor.users.findOne({ _id: this.owner});
 	}, 
@@ -9,5 +9,13 @@ Template.comment.helpers({
 			if (owner.services.facebook) 
 				return "http://graph.facebook.com/" + owner.services.facebook.id + "/picture?type=square";
 		}
+	}, 
+	
+	isComment: function () {
+		return this.type == "comment";
+	}, 
+
+	isPicture: function () {
+		return this.type == "picture";
 	}
 });

@@ -1,4 +1,4 @@
-<template name="comment">
+<template name="post">
 	<div class="media">
 		<div class="media-object pull-left">
 			<img src="{{ownerPicture}}" alt=""/>
@@ -6,7 +6,12 @@
 		<div class="media-body">
 			<h5 class="media-heading">
 				<blockquote>
+					{{#if isComment}}
 					{{content}}<br>
+					{{/if}}
+					{{#if isPicture}}
+					<img src="{{content}}" alt="">
+					{{/if}}
 					<small>
 						{{#with owner}}
 						<a href="{{pathFor 'userShow'}}"><i>{{profile.name}}</i></a>
