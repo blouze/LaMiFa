@@ -5,7 +5,7 @@ Router.configure({
 });
 
 Router.after(function () {
-    $(window).scrollTop(0);
+    //$(window).scrollTop(0);
 });
 
 Router.map(function () {

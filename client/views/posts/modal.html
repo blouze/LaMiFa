@@ -1,12 +1,12 @@
 <template name="commentModal">
-	<div class="modal fade" id="commentModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal fade" id="commentModal" tabindex="-1" role="dialog">
 		<div class="modal-dialog">
-			<form id="commentForm" action="" method="POST" role="form">
-				<div class="modal-content">
-					<div class="modal-header">
-						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-						<h4 class="modal-title">Poster un commentaire</h4>
-					</div>
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+					<h4 class="modal-title">Poster un commentaire</h4>
+				</div>
+				<form id="commentForm" action="" method="POST" role="form">
 					<div class="modal-body">
 						<div class="form-group">
 							<input type="textarea" class="form-control" id="comment" placeholder="148 caractères max.">
@@ -16,8 +16,8 @@
 						<button type="submit" class="btn btn-primary"><strong>Envoyer<strong></button>
 						<button type="button" class="btn btn-default" data-dismiss="modal">Annuler</button>
 					</div>
-				</div><!-- /.modal-content -->
-			</form>
+				</form>
+			</div><!-- /.modal-content -->
 		</div><!-- /.modal-dialog -->
 	</div><!-- /.modal -->
 </template>

@@ -1,7 +1,6 @@
 /**
  * French translation for bootstrap-datepicker
  * Nico Mollet <nico.mollet@gmail.com>
- */
 
 ;(function($){
 	$.fn.datetimepicker.dates['fr'] = {
@@ -16,3 +15,4 @@
 		format: "dd/mm/yyyy"
 	};
 }(jQuery));
+ */

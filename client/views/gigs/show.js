@@ -47,7 +47,6 @@ Template.gigShow.events({
 		function(InkBlob){
 			var inkBlob = JSON.stringify(InkBlob);
 			console.log(InkBlob);
-			console.log(InkBlob.url);
 			Posts.insert({
 				owner: Meteor.userId(), 
 				gig_id: gig_id, 

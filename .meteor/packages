@@ -5,17 +5,17 @@
 
 standard-app-packages
 preserve-inputs
-bootstrap-3
-accounts-facebook
-accounts-ui
-font-awesome-4
-iron-router
-parsleyjs
-accounts-password
-leaflet-0.6.4
 underscore-string-latest
-jquery-rateit
 npm
+iron-router
+accounts-ui
+accounts-password
+accounts-facebook
+bootstrap-3
 Bootstrap3-Typeahead
+font-awesome-4
+moment
+parsleyjs
+leaflet-0.6.4
+jquery-rateit
 bootstrap3-datetimepicker
-filepicker

@@ -9,7 +9,7 @@
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="{{pathFor "home"}}" alt="LaMiFa">
+				<a class="navbar-brand" href="{{pathFor "home"}}" alt="{{siteName}}">
 					<i class="fa fa-music"></i>
 					<strong>{{siteName}}</strong>
 				</a>
@@ -53,12 +53,10 @@
 	</li>
 	{{else}}
 	<li>
-		{{#with currentUser}}
-		<a href="{{pathfor 'userShow'}}">
+		<a href="{{pathfor 'userShow' _id=currentUser._id }}">
 			<i class="fa fa-user">&nbsp;</i>
-			{{profile.name}}
+			{{currentUser.profile.name}}
 		</a>
-		{{/with}}
 	</li>
 	{{/if}}
 	{{/if}}

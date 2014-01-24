@@ -11,7 +11,6 @@ Template.post.helpers({
 		}
 	}, 
 	timeAgo: function () {
-		console.log(moment(this.time));
 		return moment(this.time).format("DD/MM/YY HH:mm");
 	}, 
 	
