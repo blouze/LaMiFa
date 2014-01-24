@@ -1,5 +1,5 @@
 Handlebars.registerHelper("siteName", function () {
-	return "LaMiFa";
+	return "La-Mi-Fa";
 });
 
 Handlebars.registerHelper("isAdmin", function () {
