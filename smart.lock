@@ -12,8 +12,8 @@
       "jquery-rateit": {},
       "npm": {},
       "Bootstrap3-Typeahead": {},
-      "bootstrap3-datetimepicker": {},
-      "filepicker": {}
+      "filepicker": {},
+      "bootstrap-datepicker2": {}
     },
     "packages": {
       "bootstrap-3": {
@@ -66,15 +66,15 @@
         "tag": "v0.1.1",
         "commit": "770b69d73e559c9f6506daa0a034acab21169479"
       },
-      "bootstrap3-datetimepicker": {
-        "git": "https://github.com/tsega/meteor-bootstrap3-datetimepicker.git",
-        "tag": "v0.0.5",
-        "commit": "30b5fa0759f98b75761772ad891876408f7cc8c4"
-      },
       "filepicker": {
         "git": "https://github.com/Ink/meteor.git",
         "tag": "v0.4.0",
         "commit": "20d56aaaf48be3a5c0499547a495a6463b4fa3d9"
+      },
+      "bootstrap-datepicker2": {
+        "git": "https://github.com/deepwell/meteor-bootstrap-datepicker.git",
+        "tag": "v1.2.0",
+        "commit": "b7de18a7cc651ea665cda75048663f90d1a11d10"
       }
     }
   }

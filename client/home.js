@@ -22,15 +22,20 @@ Template.home.rendered = function () {
 
 Template.home.helpers({
 	matchGig: function () {
+		return;
 		var position = Session.get("userPosition");
+		console.log(position);
+		if (!position)
+			return;
+
 		var place = Places.findOne({
 			location: {
 				$near: [position.longitude, position.latitude], 
 				$maxDistance: 100
 			}
 		});
+
 		if (place)
-			console.log(place.name);
 			return Gigs.findOne({
 				place_id: place._id
 			});
@@ -52,7 +57,6 @@ Template.home.helpers({
 				$maxDistance: 100
 			}
 		});
-		console.log(places.fetch());
 		return places;
 	}
 });

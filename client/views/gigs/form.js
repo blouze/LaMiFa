@@ -1,9 +1,6 @@
+var pickedDate;
+
 Template.gigForm.helpers({
-	date_str: function () {
-		console.log();
-		var m = this.date ? moment.unix(this.date) : moment();
-		return m.format("DD/MM/YYYY");
-	}, 
 	artist: function () {
 		return Artists.findOne({_id: this.artist_id});
 	}, 
@@ -22,7 +19,14 @@ Template.gigForm.helpers({
 });
 
 Template.gigForm.rendered = function () {
-	$("#date").datetimepicker();
+	$("#date").datepicker({
+		startDate: "today",
+		language: "fr"
+	}).on("changeDate", function(e){
+		pickedDate = e.date;
+	});
+	if (this.data.date)
+		$("#date").datepicker("update", moment.unix(this.data.date).toDate());
 
 	$("#artist").typeahead({
 		source: _.pluck(Artists.find().fetch(), "name")
@@ -62,7 +66,7 @@ Template.gigForm.events({
 				$set: {
 					artist_id: artist._id, 
 					place_id: place._id, 
-					date: moment(t.find("#date").value, "DD/MM/YYYY").unix(), 
+					date: moment(pickedDate).unix(), 
 					facebook_id: t.find("#facebook_id").value
 				}
 			}, function (err, id) {
@@ -73,7 +77,7 @@ Template.gigForm.events({
 			});
 		else 
 			Gigs.insert({
-				date: moment(t.find("#date").value, "DD/MM/YYYY").unix(), 
+				date: moment(pickedDate).unix(), 
 				artist_id: artist._id, 
 				place_id: place._id, 
 				facebook_id: t.find("#facebook_id").value, 
