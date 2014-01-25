@@ -23,11 +23,19 @@
 					<div class="media">
 						<img src="{{placeThumbnail}}" alt="Image du profil" class="media-object pull-left"/>
 						<div class="media-body">
+<<<<<<< HEAD
 							<h4 class="media-heading">
 								{{#with place}}
 								<a href="{{pathFor "placeShow"}}">{{name}}</a><br>
 								{{/with}}
 							</h4>
+=======
+							<strong class="media-heading">
+								{{#with place}}
+								<a href="{{pathFor "placeShow"}}">{{name}}</a><br>
+								{{/with}}
+							</strong>
+>>>>>>> dfddd4d3b98879dd60e0de4c0bc9e8fe9cfefb2a
 							<small>
 								<i class="fa fa-map-marker"></i>&nbsp;
 								{{shortenedAdress place.address}}
@@ -48,7 +56,11 @@
 
 	{{#if posts.count}}
 	<div class="page-header">
+<<<<<<< HEAD
 		<h3>Commentaires du public :</h3>
+=======
+		<strong>Soumis par le public :</strong>
+>>>>>>> dfddd4d3b98879dd60e0de4c0bc9e8fe9cfefb2a
 	</div>
 	<div class="list-group">
 		{{#each posts}}
