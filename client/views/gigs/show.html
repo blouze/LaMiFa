@@ -12,7 +12,7 @@
 
 	<div class="row">
 		<div class="media col-xs-12">
-		<img src="{{gigPicture}}" alt="" class="img-thumbnail media-object pull-left" style="margin-bottom:12px">
+			<img src="{{gigPicture}}" alt="" class="img-thumbnail media-object pull-left" style="margin-bottom:12px">
 			<div class="media-body col-xs-12 col-sm-8">
 				<h2 class="media-heading">
 					{{#with artist}}
@@ -23,19 +23,11 @@
 					<div class="media">
 						<img src="{{placeThumbnail}}" alt="Image du profil" class="media-object pull-left"/>
 						<div class="media-body">
-<<<<<<< HEAD
 							<h4 class="media-heading">
 								{{#with place}}
 								<a href="{{pathFor "placeShow"}}">{{name}}</a><br>
 								{{/with}}
 							</h4>
-=======
-							<strong class="media-heading">
-								{{#with place}}
-								<a href="{{pathFor "placeShow"}}">{{name}}</a><br>
-								{{/with}}
-							</strong>
->>>>>>> dfddd4d3b98879dd60e0de4c0bc9e8fe9cfefb2a
 							<small>
 								<i class="fa fa-map-marker"></i>&nbsp;
 								{{shortenedAdress place.address}}
@@ -56,11 +48,7 @@
 
 	{{#if posts.count}}
 	<div class="page-header">
-<<<<<<< HEAD
 		<h3>Commentaires du public :</h3>
-=======
-		<strong>Soumis par le public :</strong>
->>>>>>> dfddd4d3b98879dd60e0de4c0bc9e8fe9cfefb2a
 	</div>
 	<div class="list-group">
 		{{#each posts}}

@@ -53,10 +53,12 @@
 	</li>
 	{{else}}
 	<li>
-		<a href="{{pathfor 'userShow' _id=currentUser._id }}">
+		{{#with currentUser}}
+		<a href="{{pathFor 'userShow'}}">
 			<i class="fa fa-user">&nbsp;</i>
-			{{currentUser.profile.name}}
+			{{profile.name}}
 		</a>
+		{{/with}}
 	</li>
 	{{/if}}
 	{{/if}}
