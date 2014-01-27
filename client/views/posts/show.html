@@ -11,11 +11,37 @@
 				{{#if isPicture}}
 				<img src="{{content}}" alt="">
 				{{/if}}
-				{{#with owner}}
+				<br>
+<<<<<<< HEAD
+				<small>
+=======
 				<small class="">
-					<a href="{{pathFor 'userShow'}}"><i>{{profile.name}}</i></a>, {{timeAgo}}.
+>>>>>>> a30ec2bd273bfcc74da8b1461d64e95e2c354285
+					{{#with owner}}
+					<a href="{{pathFor 'userShow'}}"><i>{{profile.name}}</i></a>, {{timeAgo}}
+					{{/with}}
+					{{#unless userHasVoted}}
+<<<<<<< HEAD
+					&nbsp;&nbsp;
+					<a href="#" id="bonus">
+						<i class="fa fa-thumbs-o-up"></i>
+					</a> - 
+					<a href="#" id="malus">
+						<i class="fa fa-thumbs-o-down"></i>
+					</a>
+=======
+					<span>
+						&nbsp;|&nbsp;
+						<a href="#" id="bonus">
+							<i class="fa fa-thumbs-o-up"></i>
+						</a> - 
+						<a href="#" id="malus">
+							<i class="fa fa-thumbs-o-down"></i>
+						</a>
+					</span>
+>>>>>>> a30ec2bd273bfcc74da8b1461d64e95e2c354285
+					{{/unless}}
 				</small>
-				{{/with}}
 			</blockquote>
 		</div>
 	</div>

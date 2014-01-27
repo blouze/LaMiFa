@@ -13,7 +13,7 @@ Router.map(function () {
 	this.route("home", {
 		path: "/", 
 		waitOn: function () {
-			Meteor.subscribe("places", Session.get("userPosition"));
+			Meteor.subscribe("places");
 		}
 	});
 
