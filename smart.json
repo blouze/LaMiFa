@@ -11,6 +11,7 @@
     "npm": {},
     "Bootstrap3-Typeahead": {},
     "filepicker": {},
-    "bootstrap-datepicker2": {}
+    "bootstrap-datepicker2": {},
+    "bootstrap-3-timepicker": {}
   }
 }

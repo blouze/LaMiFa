@@ -13,7 +13,8 @@
       "npm": {},
       "Bootstrap3-Typeahead": {},
       "filepicker": {},
-      "bootstrap-datepicker2": {}
+      "bootstrap-datepicker2": {},
+      "bootstrap-3-timepicker": {}
     },
     "packages": {
       "bootstrap-3": {
@@ -75,6 +76,11 @@
         "git": "https://github.com/deepwell/meteor-bootstrap-datepicker.git",
         "tag": "v1.2.0",
         "commit": "b7de18a7cc651ea665cda75048663f90d1a11d10"
+      },
+      "bootstrap-3-timepicker": {
+        "git": "https://github.com/ianserlin/meteor-bootstrap-timepicker.git",
+        "tag": "v0.2.5",
+        "commit": "12dd7c5dd0e67f0f307e7c5aefed74777be808f1"
       }
     }
   }

@@ -5,6 +5,13 @@
 		</div>
 		<div class="media-body">
 			<blockquote>
+				<small class="">
+					{{#with owner}}
+					<a href="{{pathFor 'userShow'}}"><i>{{profile.name}}</i></a>, {{timeAgo}}
+					{{/with}}
+					{{#unless userHasVoted}}
+					{{/unless}}
+				</small>
 				{{#if isComment}}
 				"{{content}}"
 				{{/if}}
@@ -12,36 +19,14 @@
 				<img src="{{content}}" alt="">
 				{{/if}}
 				<br>
-<<<<<<< HEAD
-				<small>
-=======
-				<small class="">
->>>>>>> a30ec2bd273bfcc74da8b1461d64e95e2c354285
-					{{#with owner}}
-					<a href="{{pathFor 'userShow'}}"><i>{{profile.name}}</i></a>, {{timeAgo}}
-					{{/with}}
-					{{#unless userHasVoted}}
-<<<<<<< HEAD
-					&nbsp;&nbsp;
+				<strong class="pull-right">
 					<a href="#" id="bonus">
 						<i class="fa fa-thumbs-o-up"></i>
-					</a> - 
+					</a>&nbsp;|&nbsp;
 					<a href="#" id="malus">
 						<i class="fa fa-thumbs-o-down"></i>
 					</a>
-=======
-					<span>
-						&nbsp;|&nbsp;
-						<a href="#" id="bonus">
-							<i class="fa fa-thumbs-o-up"></i>
-						</a> - 
-						<a href="#" id="malus">
-							<i class="fa fa-thumbs-o-down"></i>
-						</a>
-					</span>
->>>>>>> a30ec2bd273bfcc74da8b1461d64e95e2c354285
-					{{/unless}}
-				</small>
+				</strong>
 			</blockquote>
 		</div>
 	</div>

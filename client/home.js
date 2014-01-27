@@ -9,6 +9,7 @@ Template.userPositionMap.rendered = function () {
 	}
 
 	var position = Session.get("userPosition");
+	console.log(position);
 	if (position) {
 		markLocation({
 			X: position.longitude, 

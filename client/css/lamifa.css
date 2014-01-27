@@ -68,3 +68,14 @@ code {
 	margin-left: auto;
 	margin-right: auto;
 }
+
+.rating {
+	unicode-bidi: bidi-override;
+	direction: rtl;
+}
+
+.rating > span:hover:before,
+.rating > span:hover ~ span:before {
+	content: "\2605";
+	position: absolute;
+}
