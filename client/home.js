@@ -15,6 +15,7 @@ Template.userPositionMap.rendered = function () {
 			X: position.longitude, 
 			Y: position.latitude
 		});
+		markMobility(0.300);
 	}
 };
 
@@ -22,10 +23,13 @@ Template.home.rendered = function () {
 };
 
 Template.home.helpers({
+	userPosition: function () {
+		return Session.get("userPosition");
+	}, 
+
 	matchGig: function () {
 		return;
 		var position = Session.get("userPosition");
-		console.log(position);
 		if (!position)
 			return;
 
@@ -41,24 +45,17 @@ Template.home.helpers({
 				place_id: place._id
 			});
 	}, 
+
 	gigs: function () {
-		var place_ids = _.pluck(Places.find().fetch(), "_id");
-		var result = Gigs.find({
-			place_id: { $in: place_ids }
-		}, { sort: { date: 1 }});
-		return result;
+		return Gigs.find();
 	}, 
+
 	artists: function () {
 		return Artists.find();
 	}, 
+
 	places: function () {
-		var places = Places.find({
-			location: {
-				$near: [Session.get("userPosition").longitude, Session.get("userPosition").latitude], 
-				$maxDistance: 100
-			}
-		});
-		return places;
+		return Places.find();
 	}
 });
 
@@ -81,14 +78,17 @@ Template.gigItem.helpers({
 	artist: function () {
 		return Artists.findOne({_id: this.artist_id});
 	}, 
+
 	place: function () {
 		return Places.findOne({_id: this.place_id});
 	}, 
+
 	city: function () {
 		var place = Places.findOne({_id: this.place_id});
 		if (place && place.address)
 			return _.words(place.address, ", ").slice(-1);
 	}, 
+
 	gigThumbnail: function () {
 		return "http://graph.facebook.com/" + this.facebook_id + "/picture?type=square";
 	}

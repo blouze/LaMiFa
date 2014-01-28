@@ -4,9 +4,11 @@ Template.gigForm.helpers({
 	artist: function () {
 		return Artists.findOne({_id: this.artist_id});
 	}, 
+
 	place: function () {
 		return Places.findOne({_id: this.place_id});
 	}, 
+
 	fbEvent: function () {
 		console.log(Session.get("fbEvent"));
 		Meteor.call('getUserData', function(err, data) {
@@ -31,7 +33,6 @@ Template.gigForm.rendered = function () {
 	$("#artist").typeahead({
 		source: _.pluck(Artists.find().fetch(), "name")
 	});
-
 	$("#place").typeahead({
 		source: _.pluck(Places.find().fetch(), "name")
 	});

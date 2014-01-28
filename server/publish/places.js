@@ -1,16 +1,41 @@
 Meteor.publish("places", function (position) {
-	var places;
 	if (!position)
-		places = Places.find();
-	else
-		places = Places.find({
+		return Places.find();
+
+
+	var place_ids = _.pluck(
+		Places.find({
 			location: {
-				$near: [position.longitude, position.latitude], 
-				$maxDistance: 100
+				$geoWithin: {
+					$centerSphere: [[position.longitude, position.latitude], 10.0 / 6371]
+				}
 			}
-		}, { limit: 2 });
-	console.log(_.pluck(places.fetch(), "name"));
-	return places;
+		}).fetch(), "_id");
+
+	var gig_ids = _.pluck(
+		Gigs.find({
+			_id: { $in: place_ids }
+		}).fetch(), "_id");
+
+	var artist_ids = _.pluck(
+		Gigs.find({
+			_id: { $in: place_ids }
+		}).fetch(), "artist_id");
+
+
+	var places = Places.find({
+		_id: { $in: place_ids }
+	});
+
+	var gigs = Gigs.find({
+		_id: { $in: gig_ids }
+	}, { sort: { date: 1 }});
+
+	var artists = Artists.find({
+		artist_id: { $in: artist_ids }
+	});
+
+	return [places, gigs, artists];
 });
 
 Meteor.publish("place", function (selector) {

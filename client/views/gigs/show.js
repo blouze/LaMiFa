@@ -1,9 +1,9 @@
 Template.gigShow.helpers({
 	artist: function () {
-		return Artists.findOne({_id: this.artist_id});
+		return Artists.findOne();
 	}, 
 	place: function () {
-		return Places.findOne({_id: this.place_id});
+		return Places.findOne();
 	}, 
 	posts: function () {
 		return Posts.find({gig_id: this._id}, {sort: {time: -1}});
@@ -12,12 +12,14 @@ Template.gigShow.helpers({
 		return "http://graph.facebook.com/" + this.facebook_id + "/picture?type=large";
 	}, 
 	artistThumbnail: function () {
-		var artist = Artists.findOne({_id: this.artist_id});
-		return "http://graph.facebook.com/" + artist.facebook_id + "/picture?type=square";
+		var artist = Artists.findOne();
+		if (artist)
+			return "http://graph.facebook.com/" + artist.facebook_id + "/picture?type=square";
 	}, 
 	placeThumbnail: function () {
-		var place = Places.findOne({_id: this.place_id});
-		return "http://graph.facebook.com/" + place.facebook_id + "/picture?type=square";
+		var place = Places.findOne();
+		if (place)
+			return "http://graph.facebook.com/" + place.facebook_id + "/picture?type=square";
 	}
 });
 

@@ -1,7 +1,7 @@
 Meteor.subscribe('users');
-Meteor.subscribe('artists');
-Meteor.subscribe('places');
-Meteor.subscribe('gigs');
+//Meteor.subscribe('artists');
+//Meteor.subscribe('places', Session.get("userPosition"));
+//Meteor.subscribe('gigs');
 Meteor.subscribe('votes');
 Meteor.subscribe('posts');
 Meteor.subscribe('comments');

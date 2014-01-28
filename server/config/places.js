@@ -1,1 +1,1 @@
-Places._ensureIndex({ location: "2d" });
+Places._ensureIndex({ location: "2dsphere" });

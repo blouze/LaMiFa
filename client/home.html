@@ -9,23 +9,35 @@
 <template name="layout">
 	<div id="wrap"> 
 		{{>navbar}}
-
 		<div class="container">
 			{{yield}}
 		</div>
-
 		<div id="push"></div>
 	</div>
-
 	{{>footer}}
 </template>
 
 <template name="home">
+	{{#unless currentUser}}
+	<br>
+	<div class="jumbotron">
+		<h2>
+			<i class="fa fa-music"></i>
+			<strong>{{siteName}}</strong>
+			<small style="vertical-align:top">(αlphα)</small><br>
+			<small><i>Votez pour des lendemains qui chantent.</i></small>&nbsp;
+		</h2>
+		<a class="btn btn-success" id="login" href="#">Connectez-vous avec Facebook</a>
+	</div>
+	{{/unless}}
+
+
+	{{#if userPosition}}
 
 	<div class="row">
 		{{>userPositionMap}}
 	</div>
-	<br>
+
 
 	{{#if matchGig}}
 	<br>
@@ -41,19 +53,6 @@
 	<br>
 	{{/if}}
 
-	{{#unless currentUser}}
-	<div class="jumbotron col-sm-11">
-		<h1>
-			<i class="fa fa-music"></i>
-			<strong>{{siteName}}</strong>
-			<small style="vertical-align:top">(αlphα)</small><br>
-			<small><i>Votez pour des lendemains qui chantent.</i></small>&nbsp;
-		</h1>
-		<a class="btn btn-success" id="login" href="#">Connectez-vous avec Facebook</a>
-	</div>
-	<br>
-	{{else}}
-
 	<div class="row">
 		<div class="container">
 			<div class="page-header">
@@ -68,6 +67,11 @@
 	</div>
 	<br>
 
+
+	{{/if}}
+
+
+	{{#if isAdmin}}
 	<div class="row">
 		<div class="container">
 			<div class="page-header">
@@ -81,7 +85,6 @@
 		</div>
 	</div>
 
-	{{#if isAdmin}}
 	<div class="row">
 		<div class="container">
 			<div class="page-header">
@@ -95,7 +98,6 @@
 		</div>
 	</div>
 	{{/if}}
-	{{/unless}}
 </template>
 
 <template name="userPositionMap">

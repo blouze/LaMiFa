@@ -13,7 +13,14 @@ Router.map(function () {
 	this.route("home", {
 		path: "/", 
 		waitOn: function () {
-			Meteor.subscribe("places");
+			if (Session.get("userPosition"))
+				Meteor.subscribe("places", Session.get("userPosition"));
+
+			if (Meteor.user() && Meteor.user().services && Meteor.user().services.password) {
+				Meteor.subscribe("gigs");
+				Meteor.subscribe("artists");
+				Meteor.subscribe("places");
+			}
 		}
 	});
 
@@ -26,7 +33,11 @@ Router.map(function () {
 	});
 
 	this.route("gigNew", {
-		path: "/gig/new"
+		path: "/gig/new", 
+		waitOn: function () {
+			Meteor.subscribe("artists");
+			Meteor.subscribe("places");
+		}
 	});
 
 	this.route("gigShow", {
