@@ -2,10 +2,18 @@ var pickedDate;
 
 Template.gigForm.helpers({
 	artist: function () {
+		$("#artist").typeahead({
+			source: _.pluck(Artists.find().fetch(), "name")
+		});
+
 		return Artists.findOne({_id: this.artist_id});
 	}, 
 
 	place: function () {
+		$("#place").typeahead({
+			source: _.pluck(Places.find().fetch(), "name")
+		});
+		
 		return Places.findOne({_id: this.place_id});
 	}, 
 
@@ -29,13 +37,6 @@ Template.gigForm.rendered = function () {
 	});
 	if (this.data.date)
 		$("#date").datepicker("update", moment.unix(this.data.date).toDate());
-
-	$("#artist").typeahead({
-		source: _.pluck(Artists.find().fetch(), "name")
-	});
-	$("#place").typeahead({
-		source: _.pluck(Places.find().fetch(), "name")
-	});
 };
 
 Template.gigForm.events({
