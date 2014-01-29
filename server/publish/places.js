@@ -1,15 +1,18 @@
 Meteor.publish("places", function (position, radius) {
-	if (!position)
-		return Places.find();
+	var place_ids;
 
-	var place_ids = _.pluck(
-		Places.find({
-			location: {
-				$geoWithin: {
-					$centerSphere: [[position.longitude, position.latitude], radius / 1000 / 6371]
+	if (!position)
+		place_ids = _.pluck(Places.find().fetch(), "_id");
+
+	else
+		place_ids = _.pluck(
+			Places.find({
+				location: {
+					$geoWithin: {
+						$centerSphere: [[position.longitude, position.latitude], radius / 1000 / 6371]
+					}
 				}
-			}
-		}).fetch(), "_id");
+			}).fetch(), "_id");
 
 	var gig_ids = _.pluck(Gigs.find({place_id: {$in: place_ids}}).fetch(), "_id");
 	var artist_ids = _.pluck(Gigs.find({_id: {$in: gig_ids}}).fetch(), "artist_id");

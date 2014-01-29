@@ -25,6 +25,7 @@
 		</div>
 	</div>
 
+	{{#if gigsToCome.count}}
 	<div class="row">
 		<div class="container">
 			<div class="page-header">
@@ -34,14 +35,14 @@
 				<div class="list-group">
 					{{#each gigsToCome}}
 					{{> gigItem}}
-					{{else}}
-					<small>Aucun évènement à venir.</small>
 					{{/each}}
 				</div>
 			</div>
 		</div>
 	</div>
+	{{/if}}
 
+	{{#if pastGigs.count}}
 	<div class="row">
 		<div class="container">
 			<div class="page-header">
@@ -51,11 +52,10 @@
 				<div class="list-group">
 					{{#each pastGigs}}
 					{{> gigItem}}
-					{{else}}
-					<small>Aucun évènement passé.</small>
 					{{/each}}
 				</div>
 			</div>
 		</div>
 	</div>
+	{{/if}}
 </template>

@@ -17,8 +17,7 @@ Router.map(function () {
 				Meteor.subscribe("places", Session.get("userPosition"), Session.get("searchRadius"));
 
 			if (Meteor.user() && Meteor.user().services && Meteor.user().services.password) {
-				Meteor.subscribe("gigs");
-				Meteor.subscribe("artists");
+				Meteor.subscribe("places");
 			}
 		}
 	});

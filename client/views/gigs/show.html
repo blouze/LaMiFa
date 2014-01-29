@@ -44,40 +44,42 @@
 		</div>
 	</div>
 
-	<div class="panel panel-primary">
-		<div class="panel-heading">
-			<h2 class="panel-title">
-				<i class="fa fa-map-marker"></i>&nbsp;
-				<strong>Vous y êtes !</strong>
-			</h2>
-		</div>
+	<div class="row">
+		<div class="container col-sm-12">
+			<div class="panel panel-primary">
+				<div class="panel-heading">
+					<h2 class="panel-title">
+						<i class="fa fa-map-marker"></i>&nbsp;
+						<strong>Vous y êtes !</strong>
+					</h2>
+				</div>
 
-		<div class="panel-body">
-			{{#unless currentUser}}
-			Pour votez et vous exprimer,&nbsp;&nbsp;
-			<a class="btn btn-success" id="login" href="#"><i class="fa fa-lg fa-facebook-square">&nbsp;&nbsp;</i>Connectez-vous avec Facebook</a>
-			{{else}}
-			{{#unless isAdmin}}
-			<div class="col-sm-offset-2">
-				<br>
-				{{>userProfile}}
+				<div class="panel-body">
+					{{#unless currentUser}}
+					Pour votez et vous exprimer,&nbsp;&nbsp;
+					<a class="btn btn-success" id="login" href="#"><i class="fa fa-lg fa-facebook-square">&nbsp;&nbsp;</i>Connectez-vous avec Facebook</a>
+					{{else}}
+					{{#unless isAdmin}}
+					<div class="col-sm-offset-2">
+						<br>
+						{{>userProfile}}
+					</div>
+					{{/unless}}
+					{{/unless}}
+				</div>
 			</div>
-			{{/unless}}
-			{{/unless}}
 		</div>
 	</div>
 
 	{{#if posts.count}}
 	<div class="page-header">
-		<h3>Commentaires du public :</h3>
+		<h4>Commentaires du public :</h4>
 	</div>
 	<div class="list-group">
 		{{#each posts}}
 		{{>post}}
 		{{/each}}
 	</div>
-	{{else}}
-	<small>Aucun commentaire pour cet évènement.</small>
 	{{/if}}
 </template>
 

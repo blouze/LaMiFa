@@ -23,7 +23,11 @@ Template.post.helpers({
 	}, 
 
 	userHasVoted: function () {
-		return this.bonus && this.bonus.indexOf(Meteor.userId()) >= 0;
+		if (this.bonus) 
+			return this.bonus.indexOf(Meteor.userId()) >= 0;
+
+		if (this.malus) 
+			return this.malus.indexOf(Meteor.userId()) >= 0;
 	}
 });
 

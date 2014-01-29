@@ -18,6 +18,10 @@
 				{{#if isPicture}}
 				<img src="{{content}}" alt="">
 				{{/if}}
+
+				{{#if currentUser}}
+				{{#unless isAdmin}}
+				{{#unless userHasVoted}}
 				<br>
 				<strong class="pull-right">
 					<a href="#" id="bonus">
@@ -27,6 +31,9 @@
 						<i class="fa fa-thumbs-o-down"></i>
 					</a>
 				</strong>
+				{{/unless}}
+				{{/unless}}
+				{{/if}}
 			</blockquote>
 		</div>
 	</div>
