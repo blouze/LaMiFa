@@ -15,19 +15,41 @@
 			<img src="{{artistPicture}}" alt="" class="img-thumbnail media-object pull-left" style="margin-bottom:12px">
 			<div class="media-body col-xs-12 col-sm-8">
 				<h2 class="media-heading">{{name}}</h2>
-				<blockquote>
-					<small>
-					</small>
-				</blockquote>
 			</div>
 		</div>
 	</div>
 
-	<br>
+	<div class="row">
+		<div class="container">
+			<div class="page-header">
+				<h4>Évènements à venir :</h4>
+			</div>
+			<div class="col-sm-9">
+				<div class="list-group">
+					{{#each gigsToCome}}
+					{{> gigItem}}
+					{{else}}
+					<small>Aucun évènement à venir.</small>
+					{{/each}}
+				</div>
+			</div>
+		</div>
+	</div>
 
-	<div class="list-group">
-		{{#each gigs}}
-		{{> gigItem}}
-		{{/each}}
+	<div class="row">
+		<div class="container">
+			<div class="page-header">
+				<h4>Évènements passés :</h4>
+			</div>
+			<div class="col-sm-9">
+				<div class="list-group">
+					{{#each pastGigs}}
+					{{> gigItem}}
+					{{else}}
+					<small>Aucun évènement passé.</small>
+					{{/each}}
+				</div>
+			</div>
+		</div>
 	</div>
 </template>

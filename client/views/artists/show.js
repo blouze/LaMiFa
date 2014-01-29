@@ -1,7 +1,12 @@
 Template.artistShow.helpers({
-	gigs: function () {
-		return Gigs.find({ artist_id: this._id }, { sort: { date: 1 } });
+	gigsToCome: function () {
+		return Gigs.find({ date: { $gt: moment().unix() } }, { sort: { date: 1 } });
 	}, 
+
+	pastGigs: function () {
+		return Gigs.find({ date: { $lt: moment().unix() } }, { sort: { date: 1 } });
+	}, 
+
 	artistPicture: function () {
 		return "http://graph.facebook.com/" + this.facebook_id + "/picture?type=normal";
 	}

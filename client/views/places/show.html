@@ -25,11 +25,37 @@
 		</div>
 	</div>
 
-	<br>
+	<div class="row">
+		<div class="container">
+			<div class="page-header">
+				<h4>Évènements à venir :</h4>
+			</div>
+			<div class="col-sm-9">
+				<div class="list-group">
+					{{#each gigsToCome}}
+					{{> gigItem}}
+					{{else}}
+					<small>Aucun évènement à venir.</small>
+					{{/each}}
+				</div>
+			</div>
+		</div>
+	</div>
 
-	<div class="list-group">
-		{{#each gigs}}
-		{{> gigItem}}
-		{{/each}}
+	<div class="row">
+		<div class="container">
+			<div class="page-header">
+				<h4>Évènements passés :</h4>
+			</div>
+			<div class="col-sm-9">
+				<div class="list-group">
+					{{#each pastGigs}}
+					{{> gigItem}}
+					{{else}}
+					<small>Aucun évènement passé.</small>
+					{{/each}}
+				</div>
+			</div>
+		</div>
 	</div>
 </template>
