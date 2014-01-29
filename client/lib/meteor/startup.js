@@ -86,12 +86,14 @@ moment.lang('fr', {
 });
 
 Session.set("position", null);
+Session.set("searchRadius", 500);
 
 if (navigator.geolocation)
 	var watchId = navigator.geolocation.watchPosition(function (position) {
 		Session.set("userPosition", position.coords);
 	}, function () {
 		console.log("Sorry, no position available.");
+		alert("Sorry, no position available.");
 	}, {
 		enableHighAccuracy: true, 
 		timeout           : 30000, 

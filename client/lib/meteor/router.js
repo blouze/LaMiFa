@@ -14,12 +14,11 @@ Router.map(function () {
 		path: "/", 
 		waitOn: function () {
 			if (Session.get("userPosition"))
-				Meteor.subscribe("places", Session.get("userPosition"));
+				Meteor.subscribe("places", Session.get("userPosition"), Session.get("searchRadius"));
 
 			if (Meteor.user() && Meteor.user().services && Meteor.user().services.password) {
 				Meteor.subscribe("gigs");
 				Meteor.subscribe("artists");
-				Meteor.subscribe("places");
 			}
 		}
 	});

@@ -8,7 +8,7 @@ Template.userProfile.helpers({
 });
 
 Template.userVote.rendered = function () {
-	$('.rateit').rateit()
+	//$('.rateit').rateit();
 };
 
 Template.userVote.events({

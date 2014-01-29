@@ -71,7 +71,7 @@ markMobility = function (mobility) {
 	if (circle) 
 		map.removeLayer(circle);
 
-	circle = L.circle(marker.getLatLng(), mobility * 1000, {
+	circle = L.circle(marker.getLatLng(), mobility, {
 		stroke: true, 
 		weight: 1, 
 		color: "#00a", 
@@ -84,6 +84,6 @@ markMobility = function (mobility) {
 
 updateMobility = function (mobility) {
 
-	circle.setRadius(mobility * 1000);
+	circle.setRadius(mobility);
 	map.fitBounds(circle.getBounds().pad(-0.1));
 }

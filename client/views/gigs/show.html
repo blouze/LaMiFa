@@ -44,7 +44,28 @@
 		</div>
 	</div>
 
-	<br>
+	<div class="panel panel-primary">
+		<div class="panel-heading">
+			<h2 class="panel-title">
+				<i class="fa fa-map-marker"></i>&nbsp;
+				<strong>Vous y êtes !</strong>
+			</h2>
+		</div>
+
+		<div class="panel-body">
+			{{#unless currentUser}}
+			Pour votez et vous exprimer,&nbsp;&nbsp;
+			<a class="btn btn-success" id="login" href="#"><i class="fa fa-lg fa-facebook-square">&nbsp;&nbsp;</i>Connectez-vous avec Facebook</a>
+			{{else}}
+			{{#unless isAdmin}}
+			<div class="col-sm-offset-2">
+				<br>
+				{{>userProfile}}
+			</div>
+			{{/unless}}
+			{{/unless}}
+		</div>
+	</div>
 
 	{{#if posts.count}}
 	<div class="page-header">
@@ -58,14 +79,25 @@
 	{{else}}
 	<small>Aucun commentaire pour cet évènement.</small>
 	{{/if}}
+</template>
 
-	{{#if currentUser}}
-	{{#unless isAdmin}}
-	<br>
-	<div class="page-header">
-		<h3>Exprimez-vous !</h3>
-	</div>
-	{{>userProfile}}
-	{{/unless}}
-	{{/if}}
+<template name="gigItem">
+	<a class="list-group-item" href="{{pathFor 'gigShow'}}">
+		<div class="row">
+			<div class="media">
+				<div class="media-object col-sm-2 col-xs-3 pull-left">
+					<img src="{{gigThumbnail}}" alt="Image du profil"/>
+				</div>
+				<div class="media-body">
+					<h4 class="media-heading col-sm-6">
+						{{artist.name}}<br>
+						<small><strong>{{place.name}}</strong>, <i>{{city}}</i></small>
+					</h4>
+					<span class="col-sm-6">
+						<i class="fa fa-calendar"></i>&nbsp;&nbsp;{{calendar date}}
+					</span>
+				</div>
+			</div>
+		</div>
+	</a>
 </template>

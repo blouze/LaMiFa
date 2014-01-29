@@ -23,8 +23,6 @@ Template.navbar_user_logged_in.events({
 		Meteor.logout(function (err) {
 			if (err) 
 				console.log(err);
-			else
-				Router.go("home");
 		});
 	}
 });

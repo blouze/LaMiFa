@@ -24,6 +24,19 @@ Template.gigShow.helpers({
 });
 
 Template.gigShow.events({
+	"click #login": function (e, t) {
+		e.preventDefault();
+		Meteor.loginWithFacebook({
+			requestPermissions: ["email", "user_events", "read_friendlists", "publish_actions"], 
+			forceApprovalPrompt: true
+		}, function (err) {
+			if (err) 
+				console.log(err);
+			else 
+				Session.set("userId", Meteor.userId());
+		});
+	}, 
+	
 	"click a#remove": function (e, t) {
 		e.preventDefault();
 		if (confirm("Effacer l'évènement?")) 

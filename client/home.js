@@ -3,21 +3,35 @@ Template.userPositionMap.rendered = function () {
 		initMap({
 			minZoom: 5, 
 			maxZoom: 18, 
-			search: false
+			search: false, 
+			zoomControl: false
 		});
 		this.mapInit = true;
 	}
 
 	var position = Session.get("userPosition");
-	console.log(position);
 	if (position) {
 		markLocation({
 			X: position.longitude, 
 			Y: position.latitude
 		});
-		markMobility(0.300);
+		markMobility(Session.get("searchRadius"));
 	}
 };
+
+var interval;
+
+Template.userPositionMap.events({
+	"click #plus": function (e, t) {
+		Session.set("searchRadius", Session.get("searchRadius") * 1.5);
+		updateMobility(Session.get("searchRadius"));
+	}, 
+
+	"click #minus": function (e, t) {
+		Session.set("searchRadius", Math.max(Session.get("searchRadius") / 1.5, 100));
+		updateMobility(Session.get("searchRadius"));
+	}
+});
 
 Template.home.rendered = function () {
 };
@@ -47,7 +61,7 @@ Template.home.helpers({
 	}, 
 
 	gigs: function () {
-		return Gigs.find();
+		return Gigs.find({}, {sort: { date: 1 }});
 	}, 
 
 	artists: function () {

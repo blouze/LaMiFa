@@ -10,7 +10,7 @@ Handlebars.registerHelper("isAdmin", function () {
 Handlebars.registerHelper("currentUserImage", function () {
 	if (Meteor.user() && Meteor.user().services) {
 		if (Meteor.user().services.facebook) 
-			return "http://graph.facebook.com/" + Meteor.user().services.facebook.id + "/picture?type=square";
+			return "http://graph.facebook.com/" + Meteor.user().services.facebook.id + "/picture?type=normal";
 	}
 });
 

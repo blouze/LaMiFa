@@ -1,4 +1,4 @@
-Meteor.publish("places", function (position) {
+Meteor.publish("places", function (position, radius) {
 	if (!position)
 		return Places.find();
 
@@ -6,25 +6,19 @@ Meteor.publish("places", function (position) {
 		Places.find({
 			location: {
 				$geoWithin: {
-					$centerSphere: [[position.longitude, position.latitude], 10.0 / 6371]
+					$centerSphere: [[position.longitude, position.latitude], radius / 1000 / 6371]
 				}
 			}
 		}).fetch(), "_id");
 
-	var gig_ids = _.pluck(
-		Gigs.find({
-			place_id: { $in: place_ids }
-		}).fetch(), "_id");
+	var gig_ids = _.pluck(Gigs.find({place_id: {$in: place_ids}}).fetch(), "_id");
+	var artist_ids = _.pluck(Gigs.find({_id: {$in: gig_ids}}).fetch(), "artist_id");
 
-	var places = Places.find({
-		_id: { $in: place_ids }
-	});
+	var places = Places.find({_id: {$in: place_ids}});
+	var gigs = Gigs.find({_id: {$in: gig_ids}});
+	var artists = Artists.find({_id: { $in: artist_ids }});
 
-	var gigs = Gigs.find({
-		_id: { $in: gig_ids }
-	}, { sort: { date: 1 }});
-
-	return [places, gigs];
+	return [places, gigs, artists];
 });
 
 Meteor.publish("place", function (selector) {

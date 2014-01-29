@@ -19,7 +19,6 @@
 
 <template name="home">
 	{{#unless currentUser}}
-	<br>
 	<div class="jumbotron">
 		<h2>
 			<i class="fa fa-music"></i>
@@ -32,36 +31,38 @@
 	{{/unless}}
 
 
+	{{#if searchRadius}}
+	{{/if}}
 	{{#if userPosition}}
 
 	<div class="row">
-		{{>userPositionMap}}
-	</div>
+		<div class="col-sm-8 col-xs-11">
+			{{>userPositionMap}}
+		</div>
 
-
-	{{#if matchGig}}
-	<br>
-	<div class="row">
-		<div class="container">
+		{{#if matchGig}}
+		<br>
+		<div class="col-sm-4">
 			<div class="list-group">
 				{{#with matchGig}}
 				{{> gigItem}}
 				{{/with}}
 			</div>
 		</div>
+		{{/if}}
 	</div>
-	<br>
-	{{/if}}
 
 	<div class="row">
 		<div class="container">
 			<div class="page-header">
 				<h3>Évènements à proximité</h3>
 			</div>
-			<div class="list-group">
-				{{#each gigs}}
-				{{> gigItem}}
-				{{/each}}
+			<div class="col-sm-9">
+				<div class="list-group">
+					{{#each gigs}}
+					{{> gigItem}}
+					{{/each}}
+				</div>
 			</div>
 		</div>
 	</div>
@@ -101,32 +102,13 @@
 </template>
 
 <template name="userPositionMap">
-	<div class="col-xs-11">
-		{{#constant}}
-		<div id="map" />
-		{{/constant}}<br>
+	{{#constant}}
+	<div id="map" />
+	{{/constant}}<br>
+	<div class="pull-right">
+		<button id="plus" type="button" class="btn btn-primary">&nbsp;<i class="fa fa-lg fa-plus-circle"></i>&nbsp;</button>
+		<button id="minus" type="button" class="btn btn-default">&nbsp;<i class="fa fa-lg fa-minus-circle"></i>&nbsp;</button>
 	</div>
-</template>
-
-<template name="gigItem">
-	<a class="list-group-item" href="{{pathFor 'gigShow'}}">
-		<div class="row">
-			<div class="media">
-				<div class="media-object col-sm-2 col-xs-3 pull-left">
-					<img src="{{gigThumbnail}}" alt="Image du profil"/>
-				</div>
-				<div class="media-body">
-					<h4 class="media-heading col-sm-8">
-						<strong>{{artist.name}}</strong><br>
-						<small>{{place.name}}, <i>{{city}}</i></small>
-					</h4>
-					<span class="col-sm-4">
-						<i class="fa fa-calendar"></i>&nbsp;&nbsp;{{calendar date}}
-					</span>
-				</div>
-			</div>
-		</div>
-	</a>
 </template>
 
 <template name="loading">

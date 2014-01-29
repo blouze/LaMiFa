@@ -4,9 +4,9 @@
 			<img src="{{currentUserImage}}" alt="Image du profil" class="pull-left">
 			<div class="media-body">
 				<strong>
-					<h5 class="media-heading">
+					<h4 class="media-heading">
 						{{currentUser.profile.name}}
-					</h5>
+					</h4>
 				</strong>
 				<blockquote>
 					{{#if userHasVoted}}
@@ -36,13 +36,15 @@
 	</div>
 	
 	<div class="input-group">
-		<label>
-			<input type="checkbox" value="">
-			Publier sur mon mur
-		</label>
+		<small>
+			<label>
+				<input type="checkbox" value="">
+				Publier sur mon mur
+			</label>
+		</small>
 	</div>
 
-	<button type="button" class="btn btn-primary" id="vote"><i class="fa fa-thumbs-up"></i>&nbsp;<strong>Voter</strong></button><br>
+	<button type="button" class="btn btn-primary" id="vote"><i class="fa fa-lg fa-star">&nbsp;&nbsp;</i><strong>Voter</strong></button><br>
 </template>
 
 <template name="userActions">
