@@ -9,6 +9,7 @@
 <template name="layout">
 	<div id="wrap"> 
 		{{>navbar}}
+
 		<div class="container">
 			{{yield}}
 		</div>
@@ -17,28 +18,31 @@
 	{{>footer}}
 </template>
 
+<template name="homeBotron">
+	<div class="jumbotron">
+		<div class="container">
+			<h3>
+				<i class="fa fa-music"></i>
+				<strong>{{siteName}}</strong>
+				<small style="vertical-align:top">(αlphα)</small><br>
+				<small><i>Votez pour des lendemains qui chantent.</i></small>&nbsp;
+			</h3>
+			<a class="btn btn-success" id="login" href="#"><i class="fa fa-lg fa-facebook-square">&nbsp;&nbsp;</i>Connectez-vous avec Facebook</a>
+		</div>
+	</div>
+</template>
+
 <template name="home">
 	{{#unless currentUser}}
-	<div class="jumbotron">
-		<h3>
-			<i class="fa fa-music"></i>
-			<strong>{{siteName}}</strong>
-			<small style="vertical-align:top">(αlphα)</small><br>
-			<small><i>Votez pour des lendemains qui chantent.</i></small>&nbsp;
-		</h3>
-		<a class="btn btn-success" id="login" href="#">Connectez-vous avec Facebook</a>
-	</div>
+	{{>homeBotron}}
 	{{/unless}}
 
-
-	{{#if searchRadius}}
-	{{/if}}
 	{{#if userPosition}}
-
 	<div class="row">
 		<div class="col-sm-8 col-xs-11">
 			{{>userPositionMap}}
 		</div>
+		<br>
 
 		{{#if matchGig}}
 		<br>
@@ -106,17 +110,19 @@
 	<div id="map" />
 	{{/constant}}<br>
 	<div class="pull-right">
-		<button id="plus" type="button" class="btn btn-default">&nbsp;<i class="fa fa-lg fa-plus-circle"></i>&nbsp;</button>
-		<button id="minus" type="button" class="btn btn-default">&nbsp;<i class="fa fa-lg fa-minus-circle"></i>&nbsp;</button>
+		<button id="plus" type="button" class="btn btn-default" alt="plus">&nbsp;<i class="fa fa-lg fa-plus-circle"></i>&nbsp;</button>
+		<button id="minus" type="button" class="btn btn-default" alt="moins">&nbsp;<i class="fa fa-lg fa-minus-circle"></i>&nbsp;</button>
 	</div>
 </template>
 
 <template name="loading">
-	<h3>loading...</h3>
+	<i class="fa fa-spinner fa-spin fa-4x pull-right"></i>
 </template>
 
 <template name="notFound">
-	<h3>page not found</h3>
+	<blockquote>
+		<h4>Cette page n'existe pas ou n'est pas accessible.</h4>
+	</blockquote>
 </template>
 
 <template name="footer">

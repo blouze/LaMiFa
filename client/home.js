@@ -11,11 +11,11 @@ Template.userPositionMap.rendered = function () {
 
 	var position = Session.get("userPosition");
 	if (position) {
-		markLocation({
+		updatePosition({
 			X: position.longitude, 
 			Y: position.latitude
 		});
-		markMobility(Session.get("searchRadius"));
+		updateMobility(Session.get("searchRadius"));
 	}
 };
 
@@ -73,7 +73,7 @@ Template.home.helpers({
 	}
 });
 
-Template.home.events({
+Template.homeBotron.events({
 	"click #login": function (e, t) {
 		e.preventDefault();
 		Meteor.loginWithFacebook({

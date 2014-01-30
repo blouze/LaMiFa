@@ -14,7 +14,8 @@
       "Bootstrap3-Typeahead": {},
       "filepicker": {},
       "bootstrap-datepicker2": {},
-      "bootstrap-3-timepicker": {}
+      "bootstrap-3-timepicker": {},
+      "iron-router-progress": {}
     },
     "packages": {
       "bootstrap-3": {
@@ -81,6 +82,11 @@
         "git": "https://github.com/ianserlin/meteor-bootstrap-timepicker.git",
         "tag": "v0.2.5",
         "commit": "12dd7c5dd0e67f0f307e7c5aefed74777be808f1"
+      },
+      "iron-router-progress": {
+        "git": "https://github.com/Multiply/iron-router-progress.git",
+        "tag": "v0.2.0",
+        "commit": "ce730d1d26feadb7c75ea25f22c5bfdb0c549a8b"
       }
     }
   }

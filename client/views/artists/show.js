@@ -8,7 +8,7 @@ Template.artistShow.helpers({
 	}, 
 
 	artistPicture: function () {
-		return "http://graph.facebook.com/" + this.facebook_id + "/picture?type=normal";
+		return "http://graph.facebook.com/" + this.facebook_id + "/picture?type=large";
 	}
 });
 

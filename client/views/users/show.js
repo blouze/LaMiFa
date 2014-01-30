@@ -1,3 +1,9 @@
+Template.userShow.helpers({
+	posts: function () {
+		return Posts.find({}, {sort: {time: -1}});
+	}
+});
+
 Template.userProfile.helpers({
 	userHasVoted: function () {
 		return Meteor.userId() && Votes.findOne({

@@ -34,5 +34,6 @@ Meteor.publish("place", function (selector) {
 	var gigs = Gigs.find({_id: {$in: gig_ids}});
 	var artists = Artists.find({_id: { $in: artist_ids }});
 
+	//return simLatency([place, gigs, artists], 1000);
 	return [place, gigs, artists];
 });

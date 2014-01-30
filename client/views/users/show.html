@@ -1,3 +1,18 @@
+<template name="userShow">
+	{{#if posts.count}}
+	<div class="page-header">
+		<h4>Commentaires :</h4>
+	</div>
+	<div class="list-group">
+		{{#each posts}}
+		{{>post}}
+		{{/each}}
+	</div>
+	{{else}}
+	<small>Aucun commentaire posté.</small>
+	{{/if}}
+</template>
+
 <template name="userProfile">
 	<div class="container">
 		<div class="media">
@@ -10,6 +25,7 @@
 				</strong>
 				<blockquote>
 					{{#if userHasVoted}}
+					<p>
 						<strong>Merci d'avoir voté.</strong>
 					</p>
 					{{>userActions}}
@@ -48,5 +64,5 @@
 
 <template name="userActions">
 	<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#commentModal"><i class="fa fa-pencil-square-o"></i>&nbsp;&nbsp;<strong>Commenter<strong></button>
-	<button type="button" class="btn btn-default" id="postPicture"><i class="fa fa-camera"></i>&nbsp;&nbsp;<strong>Poster une photo<strong></button>
+	<button type="button" class="btn btn-success" id="postPicture"><i class="fa fa-camera"></i>&nbsp;&nbsp;<strong>Poster une photo<strong></button>
 </template>

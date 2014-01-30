@@ -42,13 +42,20 @@ mapLocate = function () {
 }
 
 
+updatePosition = function (location) {
+	if (!marker) 
+		markLocation(location);
+	else
+		marker.setLatLng([location.Y, location.X]);
+
+	//map.setView([location.Y, location.X]);
+}
+
+
 markLocation = function (location) {
 
 	if (!location)
 		return;
-
-	if (marker) 
-		map.removeLayer(marker);
 
 	marker = L.marker([location.Y, location.X]).addTo(map);
 
@@ -59,17 +66,22 @@ markLocation = function (location) {
 		}, 500);
 
 	}
+}
 
-	var zoomLevel = (location.Label && _(location.Label).strRightBack(", ") == "France") ? 10 : 16;
 
-	map.setView([location.Y, location.X], zoomLevel, {reset: false});
+updateMobility = function (mobility) {
+	if (!circle) 
+		markMobility(mobility);
+	else
+		circle.setRadius(mobility);
+
+	map.fitBounds(circle.getBounds().pad(-0.1));
 }
 
 
 markMobility = function (mobility) {
-
-	if (circle) 
-		map.removeLayer(circle);
+	if (!marker)
+		return;
 
 	circle = L.circle(marker.getLatLng(), mobility, {
 		stroke: true, 
@@ -77,13 +89,4 @@ markMobility = function (mobility) {
 		color: "#00a", 
 		fillOpacity: 0.1
 	}).addTo(map);
-
-	map.fitBounds(circle.getBounds().pad(-0.15));
-}
-
-
-updateMobility = function (mobility) {
-
-	circle.setRadius(mobility);
-	map.fitBounds(circle.getBounds().pad(-0.1));
 }

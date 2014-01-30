@@ -16,6 +16,7 @@ Meteor.publish("gig", function (selector) {
 		posts = Posts.find({gig_id: gigItem._id});
 	else
 		posts = Posts.find({gig_id: gigItem._id, locked: false});
-	
+
+	//return simLatency([gig, artist, place, votes, posts], 1000);
 	return [gig, artist, place, votes, posts];
 });

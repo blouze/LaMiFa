@@ -3,5 +3,10 @@ Meteor.publish("users", function () {
 });
 
 Meteor.publish("user", function (selector) {
-	return Meteor.users.find(selector);
+	var userItem = Meteor.users.findOne(selector);
+
+	var user = Meteor.users.find({_id: userItem._id});
+	var posts = Posts.find({owner: userItem._id});
+
+	return [user, posts];
 });

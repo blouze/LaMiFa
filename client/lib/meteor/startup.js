@@ -92,12 +92,11 @@ if (navigator.geolocation)
 	var watchId = navigator.geolocation.watchPosition(function (position) {
 		Session.set("userPosition", position.coords);
 	}, function () {
-		console.log("Sorry, no position available.");
-		alert("Sorry, no position available.");
+		alert("Désolé, nous n'avons pas pu déterminer votre position :(");
 	}, {
 		enableHighAccuracy: true, 
 		timeout           : 30000, 
 		maximumAge        : 0
 	});
 else
-	console.log("Geolocation is not supported by this browser.");
+	alert("La géolocalisation n'est pas supportée par votre navigateur.");

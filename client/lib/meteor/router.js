@@ -40,8 +40,8 @@ Router.map(function () {
 
 	this.route("gigShow", {
 		path: "/gig/:_id", 
-		waitOn: function () {
-			Meteor.subscribe("gig", this.params._id);
+		before: function () {
+			this.subscribe("gig", this.params._id).wait();
 		}, 
 		data: function () {
 			return Gigs.findOne({_id: this.params._id});
@@ -50,10 +50,10 @@ Router.map(function () {
 
 	this.route("gigEdit", {
 		path: "/gig/:_id/edit", 
-		waitOn: function () {
-			Meteor.subscribe("gig", this.params._id);
-			Meteor.subscribe("artistes");
-			Meteor.subscribe("places");
+		before: function () {
+			this.subscribe("gig", this.params._id).wait();
+			this.subscribe("artistes");
+			this.subscribe("places");
 		}, 
 		data: function () {
 			return Gigs.findOne({_id: this.params._id});
@@ -66,8 +66,8 @@ Router.map(function () {
 
 	this.route("artistShow", {
 		path: "/artist/:_id", 
-		waitOn: function () {
-			Meteor.subscribe("artist", this.params._id);
+		before: function () {
+			this.subscribe("artist", this.params._id).wait();
 		}, 
 		data: function () {
 			return Artists.findOne({_id: this.params._id});
@@ -76,8 +76,8 @@ Router.map(function () {
 
 	this.route("artistEdit", {
 		path: "/artist/:_id/edit", 
-		waitOn: function () {
-			Meteor.subscribe("artist", this.params._id);
+		before: function () {
+			this.subscribe("artist", this.params._id).wait();
 		}, 
 		data: function () {
 			return Artists.findOne({_id: this.params._id});
@@ -93,8 +93,8 @@ Router.map(function () {
 
 	this.route("placeShow", {
 		path: "/place/:_id", 
-		waitOn: function () {
-			Meteor.subscribe("place", this.params._id);
+		before: function () {
+			this.subscribe("place", this.params._id).wait();
 		}, 
 		data: function () {
 			return Places.findOne({_id: this.params._id});
@@ -103,8 +103,8 @@ Router.map(function () {
 
 	this.route("placeEdit", {
 		path: "/place/:_id/edit", 
-		waitOn: function () {
-			Meteor.subscribe("place", this.params._id);
+		before: function () {
+			this.subscribe("place", this.params._id).wait();
 		}, 
 		data: function () {
 			var place = Places.findOne({_id: this.params._id});
@@ -120,8 +120,8 @@ Router.map(function () {
 
 	this.route("userShow", {
 		path: "/user/:_id", 
-		waitOn: function () {
-			Meteor.subscribe("user", this.params._id);
+		before: function () {
+			this.subscribe("user", this.params._id).wait();
 		}, 
 		data: function () {
 			return Meteor.users.findOne({_id: this.params._id});

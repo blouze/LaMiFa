@@ -12,6 +12,7 @@
     "Bootstrap3-Typeahead": {},
     "filepicker": {},
     "bootstrap-datepicker2": {},
-    "bootstrap-3-timepicker": {}
+    "bootstrap-3-timepicker": {},
+    "iron-router-progress": {}
   }
 }
