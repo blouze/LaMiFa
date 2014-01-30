@@ -19,6 +19,9 @@ Router.map(function () {
 			if (Meteor.user() && Meteor.user().services && Meteor.user().services.password) {
 				Meteor.subscribe("places");
 			}
+		}, 
+		unload: function () {
+			this.mapInit = false;
 		}
 	});
 
@@ -32,9 +35,9 @@ Router.map(function () {
 
 	this.route("gigNew", {
 		path: "/gig/new", 
-		waitOn: function () {
-			Meteor.subscribe("artists");
-			Meteor.subscribe("places");
+		before: function () {
+			this.subscribe("artists");
+			this.subscribe("places");
 		}
 	});
 
@@ -42,6 +45,7 @@ Router.map(function () {
 		path: "/gig/:_id", 
 		before: function () {
 			this.subscribe("gig", this.params._id).wait();
+			this.subscribe("user", Meteor.userId());
 		}, 
 		data: function () {
 			return Gigs.findOne({_id: this.params._id});
@@ -121,7 +125,7 @@ Router.map(function () {
 	this.route("userShow", {
 		path: "/user/:_id", 
 		before: function () {
-			this.subscribe("user", this.params._id).wait();
+			this.subscribe("user", this.params._id, {posts: true}).wait();
 		}, 
 		data: function () {
 			return Meteor.users.findOne({_id: this.params._id});

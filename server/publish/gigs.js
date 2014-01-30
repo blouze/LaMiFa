@@ -9,14 +9,23 @@ Meteor.publish("gig", function (selector) {
 	var artist = Artists.find({_id: gigItem.artist_id});
 	var place = Places.find({_id: gigItem.place_id});
 	var votes = Votes.find({gig_id: gigItem._id});
+	var posts;
+	var users;
 
 	var user = Meteor.users.findOne({_id: this.userId});
-	var posts;
+	var postsSelector = {
+		gig_id: gigItem._id, 
+		locked: false
+	};
+
 	if (user && user.services && user.services.password)
-		posts = Posts.find({gig_id: gigItem._id});
-	else
-		posts = Posts.find({gig_id: gigItem._id, locked: false});
+		postsSelector.locked = true;
+
+	posts = Posts.find(postsSelector);
+	users = Meteor.users.find({
+		_id: { $in: _.pluck(Posts.find(postsSelector).fetch(), "owner") }
+	});
 
 	//return simLatency([gig, artist, place, votes, posts], 1000);
-	return [gig, artist, place, votes, posts];
+	return [gig, artist, place, votes, posts, users];
 });

@@ -3,8 +3,11 @@ var map, marker, circle, search;
 
 initMap = function (options) {
 
-	if (map) 
+	if (map) {
 		map.remove();
+		marker = null;
+		circle = null;
+	}
 
 	map = L.map("map", options);
 
