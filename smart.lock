@@ -15,7 +15,8 @@
       "filepicker": {},
       "bootstrap-datepicker2": {},
       "bootstrap-3-timepicker": {},
-      "iron-router-progress": {}
+      "iron-router-progress": {},
+      "leaflet": {}
     },
     "packages": {
       "bootstrap-3": {
@@ -87,6 +88,11 @@
         "git": "https://github.com/Multiply/iron-router-progress.git",
         "tag": "v0.2.0",
         "commit": "ce730d1d26feadb7c75ea25f22c5bfdb0c549a8b"
+      },
+      "leaflet": {
+        "git": "https://github.com/bevanhunt/meteor-leaflet.git",
+        "tag": "v0.3.3",
+        "commit": "cf884e462cae08eb3ec777421fa4c74d4850b88a"
       }
     }
   }

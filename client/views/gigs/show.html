@@ -1,16 +1,20 @@
 <template name="gigShow">
+	{{#if isAdmin}}
 	<div class="row">
-		{{#if isAdmin}}
-		<div class="pull-right">
-			<a class="btn btn-default btn-sm" href="{{pathFor "gigEdit"}}">
-				<i class="fa fa-wrench fa-2x"></i>
-			</a>
-			<a id="remove" class="btn btn-warning btn-sm" href="#">
-				<i class="fa fa-times fa-2x"></i>
-			</a>
+		<div class="container">
+			<div class="pull-right">
+				<a class="btn btn-default btn-sm" href="{{pathFor "gigEdit"}}">
+					<i class="fa fa-wrench fa-2x"></i>
+				</a>
+				<a id="remove" class="btn btn-warning btn-sm" href="#">
+					<i class="fa fa-times fa-2x"></i>
+				</a>
+			</div>
 		</div>
-		{{/if}}
+	</div>
+	{{/if}}
 
+	<div class="row">
 		<div class="media col-xs-12">
 			<img src="{{gigPicture}}" alt="" class="img-thumbnail media-object pull-left" style="margin-bottom:12px">
 			<div class="media-body col-xs-12 col-sm-8">
@@ -44,7 +48,10 @@
 		</div>
 	</div>
 
+	<br>
+	
 	{{#if userIsPresent}}
+	<br>
 	<div class="row">
 		<div class="container col-sm-12">
 			<div class="panel panel-info">
@@ -73,7 +80,10 @@
 	</div>
 	{{/if}}
 
+	<br>
+
 	{{#if posts.count}}
+	<br>
 	<div class="page-header">
 		<h4>Commentaires du public :</h4>
 	</div>
@@ -93,10 +103,10 @@
 					<img src="{{gigThumbnail}}" alt="Image du profil"/>
 				</div>
 				<div class="media-body">
-					<h4 class="media-heading col-sm-6">
-						{{artist.name}}<br>
+					<h5 class="media-heading col-sm-6">
+						<strong>{{artist.name}}</strong><br>
 						<small><strong>{{place.name}}</strong>, <i>{{city}}</i></small>
-					</h4>
+					</h5>
 					<span class="col-sm-6">
 						<i class="fa fa-calendar"></i>&nbsp;&nbsp;{{calendar date}}
 					</span>

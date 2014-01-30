@@ -13,6 +13,7 @@
     "filepicker": {},
     "bootstrap-datepicker2": {},
     "bootstrap-3-timepicker": {},
-    "iron-router-progress": {}
+    "iron-router-progress": {},
+    "leaflet": {}
   }
 }

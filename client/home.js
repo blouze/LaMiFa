@@ -6,15 +6,17 @@ Template.userPositionMap.rendered = function () {
 			search: false, 
 			zoomControl: false
 		});
-		this.mapInit = true;
-	}
 
-	var position = Session.get("userPosition");
-	if (position) {
-		updatePosition({
-			X: position.longitude, 
-			Y: position.latitude
-		});
+		this.mapInit = true;
+
+		var position = Session.get("userPosition");
+		if (position) {
+			updatePosition({
+				X: position.longitude, 
+				Y: position.latitude
+			});
+		}
+
 		updateMobility(Session.get("searchRadius"));
 	}
 };

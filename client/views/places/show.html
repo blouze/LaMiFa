@@ -1,16 +1,19 @@
 <template name="placeShow">
+	{{#if isAdmin}}
 	<div class="row">
-		{{#if isAdmin}}
-		<div class="pull-right">
-			<a class="btn btn-default btn-sm" href="{{pathFor "placeEdit"}}">
-				<i class="fa fa-wrench fa-2x"></i>
-			</a>
-			<a id="remove" class="btn btn-warning btn-sm" href="#">
-				<i class="fa fa-times fa-2x"></i>
-			</a>
+		<div class="container">
+			<div class="pull-right">
+				<a class="btn btn-default btn-sm" href="{{pathFor "placeEdit"}}">
+					<i class="fa fa-wrench fa-2x"></i>
+				</a>
+				<a id="remove" class="btn btn-warning btn-sm" href="#">
+					<i class="fa fa-times fa-2x"></i>
+				</a>
+			</div>
 		</div>
-		{{/if}}
-
+	</div>
+	{{/if}}
+	<div class="row">
 		<div class="media col-xs-12">
 			<img src="{{placePicture}}" alt="" class="img-thumbnail media-object pull-left" style="margin-bottom:12px">
 			<div class="media-body col-xs-12 col-sm-8">
@@ -25,7 +28,10 @@
 		</div>
 	</div>
 
+	<br>
+	
 	{{#if gigsToCome.count}}
+	<br>
 	<div class="row">
 		<div class="container">
 			<div class="page-header">
@@ -43,6 +49,7 @@
 	{{/if}}
 
 	{{#if pastGigs.count}}
+	<br>
 	<div class="row">
 		<div class="container">
 			<div class="page-header">

@@ -1,17 +1,23 @@
 Router.configure({
 	layoutTemplate: "layout", 
 	loadingTemplate: "loading", 
-	notFoundTemplate: "notFound"
+	notFoundTemplate: "notFound",
 });
 
 Router.after(function () {
-    //$(window).scrollTop(0);
+	console.log(this.route.name);
+	if(this.route.name != "home")
+		$(window).scrollTop(0);
+	this.subscribe("user", Meteor.userId());
 });
 
 Router.map(function () {
 
 	this.route("home", {
 		path: "/", 
+		before: function () {
+			this.mapInit = false;
+		}, 
 		waitOn: function () {
 			if (Session.get("userPosition"))
 				Meteor.subscribe("places", Session.get("userPosition"), Session.get("searchRadius"));
@@ -19,9 +25,6 @@ Router.map(function () {
 			if (Meteor.user() && Meteor.user().services && Meteor.user().services.password) {
 				Meteor.subscribe("places");
 			}
-		}, 
-		unload: function () {
-			this.mapInit = false;
 		}
 	});
 
@@ -45,7 +48,6 @@ Router.map(function () {
 		path: "/gig/:_id", 
 		before: function () {
 			this.subscribe("gig", this.params._id).wait();
-			this.subscribe("user", Meteor.userId());
 		}, 
 		data: function () {
 			return Gigs.findOne({_id: this.params._id});

@@ -11,7 +11,7 @@ WebFontConfig = {
 	s.parentNode.insertBefore(wf, s);
 })();
 
-L.Icon.Default.imagePath = "/packages/leaflet-0.6.4/images";
+L.Icon.Default.imagePath = "/packages/leaflet/images";
 
 (function(a) {
 	if (window.filepicker) {

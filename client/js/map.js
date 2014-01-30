@@ -2,7 +2,6 @@ var map, marker, circle, search;
 
 
 initMap = function (options) {
-
 	if (map) {
 		map.remove();
 		marker = null;
@@ -48,10 +47,11 @@ mapLocate = function () {
 updatePosition = function (location) {
 	if (!marker) 
 		markLocation(location);
-	else
+	else {
 		marker.setLatLng([location.Y, location.X]);
-
-	//map.setView([location.Y, location.X]);
+		if (circle) 
+			map.fitBounds(circle.getBounds().pad(-0.1));
+	}
 }
 
 
