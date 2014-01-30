@@ -79,3 +79,7 @@ code {
 	content: "\2605";
 	position: absolute;
 }
+
+.modal-dialog {
+	left: 0;
+}

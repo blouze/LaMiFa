@@ -1,16 +1,16 @@
 <template name="gigShow">
-	{{#if isAdmin}}
-	<div class="pull-right">
-		<a class="btn btn-default btn-sm" href="{{pathFor "gigEdit"}}">
-			<i class="fa fa-wrench fa-2x"></i>
-		</a>
-		<a id="remove" class="btn btn-warning btn-sm" href="#">
-			<i class="fa fa-times fa-2x"></i>
-		</a>
-	</div>
-	{{/if}}
-
 	<div class="row">
+		{{#if isAdmin}}
+		<div class="pull-right">
+			<a class="btn btn-default btn-sm" href="{{pathFor "gigEdit"}}">
+				<i class="fa fa-wrench fa-2x"></i>
+			</a>
+			<a id="remove" class="btn btn-warning btn-sm" href="#">
+				<i class="fa fa-times fa-2x"></i>
+			</a>
+		</div>
+		{{/if}}
+
 		<div class="media col-xs-12">
 			<img src="{{gigPicture}}" alt="" class="img-thumbnail media-object pull-left" style="margin-bottom:12px">
 			<div class="media-body col-xs-12 col-sm-8">
@@ -44,9 +44,10 @@
 		</div>
 	</div>
 
+	{{#if userIsPresent}}
 	<div class="row">
 		<div class="container col-sm-12">
-			<div class="panel panel-primary">
+			<div class="panel panel-info">
 				<div class="panel-heading">
 					<h2 class="panel-title">
 						<i class="fa fa-map-marker"></i>&nbsp;
@@ -57,7 +58,7 @@
 				<div class="panel-body">
 					{{#unless currentUser}}
 					Pour votez et vous exprimer,&nbsp;&nbsp;
-					<a class="btn btn-success" id="login" href="#"><i class="fa fa-lg fa-facebook-square">&nbsp;&nbsp;</i>Connectez-vous avec Facebook</a>
+					<a class="btn btn-primary" id="login" href="#"><i class="fa fa-lg fa-facebook-square">&nbsp;&nbsp;</i>Connectez-vous avec Facebook</a>
 					{{else}}
 					{{#unless isAdmin}}
 					<div class="col-sm-offset-2">
@@ -70,6 +71,7 @@
 			</div>
 		</div>
 	</div>
+	{{/if}}
 
 	{{#if posts.count}}
 	<div class="page-header">

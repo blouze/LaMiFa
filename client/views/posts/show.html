@@ -5,6 +5,12 @@
 		</div>
 		<div class="media-body">
 			<blockquote>
+				{{#if isComment}}
+				{{content}}
+				{{/if}}
+				{{#if isPicture}}
+				<img src="{{content}}" alt="" class="img-responsive">
+				{{/if}}
 				<small class="">
 					{{#with owner}}
 					<a href="{{pathFor 'userShow'}}"><i>{{profile.name}}</i></a>, {{timeAgo}}
@@ -12,26 +18,27 @@
 					{{#unless userHasVoted}}
 					{{/unless}}
 				</small>
-				{{#if isComment}}
-				"{{content}}"
-				{{/if}}
-				{{#if isPicture}}
-				<img src="{{content}}" alt="">
-				{{/if}}
 
 				{{#if currentUser}}
 				{{#unless isAdmin}}
 				{{#unless userHasVoted}}
 				<br>
-				<strong class="pull-right">
-					<a href="#" id="bonus">
-						<i class="fa fa-thumbs-o-up"></i>
-					</a>&nbsp;|&nbsp;
-					<a href="#" id="malus">
-						<i class="fa fa-thumbs-o-down"></i>
-					</a>
-				</strong>
+				<button id="bonus" type="button" class="btn btn-sm btn-primary">&nbsp;<i class="fa fa-thumbs-o-up"></i>&nbsp;</button>
+				<button id="malus" type="button" class="btn btn-sm btn-default">&nbsp;<i class="fa fa-thumbs-o-down"></i>&nbsp;</button>
 				{{/unless}}
+				{{else}}
+				<div class="">
+					<a id="lock" class="btn btn-default btn-sm" href="#">
+						{{#if isLocked}}
+						<i class="fa fa-sm fa-unlock"></i>
+						{{else}}
+						<i class="fa fa-sm fa-lock"></i>
+						{{/if}}
+					</a>
+					<a id="remove" class="btn btn-warning btn-sm" href="#">
+						<i class="fa fa-sm fa-times"></i>
+					</a>
+				</div>
 				{{/unless}}
 				{{/if}}
 			</blockquote>

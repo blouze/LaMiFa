@@ -22,6 +22,10 @@ Template.post.helpers({
 		return this.type == "picture";
 	}, 
 
+	isLocked: function () {
+		return this.locked;
+	}, 
+
 	userHasVoted: function () {
 		if (this.bonus) 
 			return this.bonus.indexOf(Meteor.userId()) >= 0;
@@ -32,13 +36,36 @@ Template.post.helpers({
 });
 
 Template.post.events({
-	'click #bonus': function () {
-		Posts.update({_id: this._id}, {$addToSet: {bonus: Meteor.userId()}}, function (err) {
+	'click #bonus': function (e, t) {
+		Posts.update({_id: this._id}, {$addToSet: {bonus: Meteor.userId()}});
+			if (err) 
+				console.log(err);
+	}, 
+
+	'click #malus': function (e, t) {
+		Posts.update({_id: this._id}, {$addToSet: {malus: Meteor.userId()}}, function (err) {
+			if (err) 
+				console.log(err);
 		});
 	}, 
 
-	'click #malus': function () {
-		Posts.update({_id: this._id}, {$addToSet: {malus: Meteor.userId()}}, function (err) {
+	'click #lock': function (e, t) {
+		e.preventDefault();
+		var locked = this.locked ? this.locked : false;
+		Posts.update({_id: this._id}, {$set: {locked: !locked}}, function (err) {
+			if (err) 
+				console.log(err);
 		});
+	}, 
+
+	'click #remove': function (e, t) {
+		e.preventDefault();
+		if (confirm("Effacer le post?"))
+			Posts.remove({
+				_id: this._id
+			}, function (err) {
+				if (err) 
+					console.log(err);
+			});
 	}
 });

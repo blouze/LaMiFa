@@ -19,13 +19,13 @@
 
 <template name="home">
 	{{#unless currentUser}}
-	<div class="jumbotron col-sm-9">
-		<h2>
+	<div class="jumbotron">
+		<h3>
 			<i class="fa fa-music"></i>
 			<strong>{{siteName}}</strong>
 			<small style="vertical-align:top">(αlphα)</small><br>
 			<small><i>Votez pour des lendemains qui chantent.</i></small>&nbsp;
-		</h2>
+		</h3>
 		<a class="btn btn-success" id="login" href="#">Connectez-vous avec Facebook</a>
 	</div>
 	{{/unless}}
@@ -106,7 +106,7 @@
 	<div id="map" />
 	{{/constant}}<br>
 	<div class="pull-right">
-		<button id="plus" type="button" class="btn btn-primary">&nbsp;<i class="fa fa-lg fa-plus-circle"></i>&nbsp;</button>
+		<button id="plus" type="button" class="btn btn-default">&nbsp;<i class="fa fa-lg fa-plus-circle"></i>&nbsp;</button>
 		<button id="minus" type="button" class="btn btn-default">&nbsp;<i class="fa fa-lg fa-minus-circle"></i>&nbsp;</button>
 	</div>
 </template>
