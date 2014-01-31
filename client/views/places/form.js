@@ -40,7 +40,8 @@ Template.placeForm.events({
 				name: t.find("#name").value, 
 				location: [location.X, location.Y], 
 				address: location.Label, 
-				facebook_id: t.find("#facebook_id").value
+				facebook_id: t.find("#facebook_id").value, 
+				owner: Meteor.userId()
 			} }, function (err) {
 				if (err) 
 					console.log(err);
