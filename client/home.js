@@ -4,7 +4,12 @@ Template.userPositionMap.rendered = function () {
 			minZoom: 5, 
 			maxZoom: 18, 
 			search: false, 
-			zoomControl: false
+			zoomControl: false, 
+			dragging: true, 
+			touchZoom: false, 
+			scrollWheelZoom: false, 
+			doubleClickZoom: false, 
+			boxZoom: false, 
 		});
 
 		this.mapInit = true;

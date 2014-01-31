@@ -23,3 +23,14 @@ Handlebars.registerHelper("shortenedAdress", function (adress) {
 
 	return _(adress).strLeftBack(", France");
 });
+
+Handlebars.registerHelper("matchPlace", function () {
+	return;
+	var position = Session.get("userPosition");
+	return Places.findOne({
+		location: {
+			$near: [position.longitude, position.latitude], 
+			$maxDistance: 50 / 6371
+		}
+	});
+});

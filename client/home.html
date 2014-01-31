@@ -20,15 +20,13 @@
 
 <template name="homeBotron">
 	<div class="jumbotron">
-		<div class="container">
-			<h3>
-				<i class="fa fa-music"></i>
-				<strong>{{siteName}}</strong>
-				<small style="vertical-align:top">(αlphα)</small><br>
-				<small><i>Votez pour des lendemains qui chantent.</i></small>&nbsp;
-			</h3>
-			<a class="btn btn-success" id="login" href="#"><i class="fa fa-lg fa-facebook-square">&nbsp;&nbsp;</i>Connectez-vous avec Facebook</a>
-		</div>
+		<h3>
+			<i class="fa fa-music"></i>
+			<strong>{{siteName}}</strong>
+			<small style="vertical-align:top">(αlphα)</small><br>
+			<small><i>Votez pour des lendemains qui chantent.</i></small>&nbsp;
+		</h3>
+		<a class="btn btn-success" id="login" href="#"><i class="fa fa-lg fa-facebook-square">&nbsp;&nbsp;</i>Connectez-vous avec Facebook</a>
 	</div>
 </template>
 
@@ -39,31 +37,34 @@
 
 	{{#if userPosition}}
 	<div class="row">
-		<div class="container">
-			<div class="col-sm-8 col-xs-11">
-				{{>userPositionMap}}
-			</div>
-			<br>
-
-			{{#if matchGig}}
-			<br>
-			<div class="col-sm-4">
-				<div class="list-group">
-					{{#with matchGig}}
-					{{> gigItem}}
-					{{/with}}
+		<div class="col-sm-8 col-xs-11">
+			<div class="panel panel-default">
+				<div class="panel-body">
+					{{>userPositionMap}}
 				</div>
 			</div>
-			{{/if}}
 		</div>
+		<br>
+
+		{{#if matchPlace}}
+		<br>
+		<div class="col-sm-4 col-xs-12">
+			<div class="list-group">
+				{{#with matchPlace}}
+				{{> gigItem}}
+				{{/with}}
+			</div>
+		</div>
+		{{/if}}
 	</div>
 
 	<br>
 
 	<div class="row">
 		<div class="container">
+			{{#if gigs.count}}
 			<div class="page-header">
-				<h4>Évènements à proximité</h4>
+				<h4>{{gigs.count}} évènement(s) à proximité :</h4>
 			</div>
 			<div class="col-sm-9">
 				<div class="list-group">
@@ -72,6 +73,9 @@
 					{{/each}}
 				</div>
 			</div>
+			{{else}}
+			<small>Aucun évènement à proximité.</small>
+			{{/if}}
 		</div>
 	</div>
 	<br>
