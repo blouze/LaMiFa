@@ -3,10 +3,10 @@
 	<div class="row">
 		<div class="container">
 			<div class="pull-right">
-				<a class="btn btn-default btn-sm" href="{{pathFor "artistEdit"}}">
+				<a class="btn btn-warning btn-sm" href="{{pathFor "artistEdit"}}">
 					<i class="fa fa-wrench fa-2x"></i>
 				</a>
-				<a id="remove" class="btn btn-warning btn-sm" href="#">
+				<a id="remove" class="btn btn-danger btn-sm" href="#">
 					<i class="fa fa-times fa-2x"></i>
 				</a>
 			</div>
@@ -26,6 +26,7 @@
 	<br>
 	
 	{{#if gigsToCome.count}}
+	<br>
 	<div class="row">
 		<div class="container">
 			<div class="page-header">

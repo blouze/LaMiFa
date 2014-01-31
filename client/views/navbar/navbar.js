@@ -18,6 +18,10 @@ Template.navbar_user_logged_out.events({
 });
 
 Template.navbar_user_logged_in.events({
+	'click #dropdown-link': function (e, t) {
+		e.preventDefault();
+	}, 
+	
 	'click #logout': function (e, t) {
 		e.preventDefault();
 		Meteor.logout(function (err) {

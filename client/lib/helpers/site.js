@@ -1,5 +1,5 @@
 Handlebars.registerHelper("siteName", function () {
-	return "La-Mi-Fa";
+	return "LaMiFa";
 });
 
 Handlebars.registerHelper("isAdmin", function () {
@@ -8,7 +8,6 @@ Handlebars.registerHelper("isAdmin", function () {
 });
 
 Handlebars.registerHelper("currentUserImage", function () {
-	console.log(Meteor.user())
 	if (Meteor.user() && Meteor.user().services) {
 		if (Meteor.user().services.facebook) 
 			return "http://graph.facebook.com/" + Meteor.user().services.facebook.id + "/picture?type=square";

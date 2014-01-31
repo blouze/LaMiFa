@@ -1,7 +1,7 @@
 <template name="post">
 	<div class="media">
 		<div class="media-object pull-left">
-			<img src="{{ownerPicture}}" alt=""/>
+			<img src="{{ownerPicture}}" alt="" />
 		</div>
 		<div class="media-body">
 			<blockquote>
@@ -9,7 +9,7 @@
 				{{content}}
 				{{/if}}
 				{{#if isPicture}}
-				<img src="{{content}}" alt="" class="img-responsive">
+				<img src="{{content}}" alt="" class="img-responsive img-thumbnail">
 				{{/if}}
 				<small class="">
 					{{#with owner}}
@@ -28,14 +28,14 @@
 				{{/unless}}
 				{{else}}
 				<div class="">
-					<a id="lock" class="btn btn-default btn-sm" href="#">
+					<a id="lock" class="btn btn-warning btn-sm" href="#">
 						{{#if isLocked}}
 						<i class="fa fa-sm fa-unlock"></i>
 						{{else}}
 						<i class="fa fa-sm fa-lock"></i>
 						{{/if}}
 					</a>
-					<a id="remove" class="btn btn-warning btn-sm" href="#">
+					<a id="remove" class="btn btn-danger btn-sm" href="#">
 						<i class="fa fa-sm fa-times"></i>
 					</a>
 				</div>

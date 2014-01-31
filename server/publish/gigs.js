@@ -14,12 +14,11 @@ Meteor.publish("gig", function (selector) {
 
 	var user = Meteor.users.findOne({_id: this.userId});
 	var postsSelector = {
-		gig_id: gigItem._id, 
-		locked: false
+		gig_id: gigItem._id
 	};
 
-	if (user && user.services && user.services.password)
-		postsSelector.locked = true;
+	if (!(user && user.services && user.services.password))
+		postsSelector.locked = false;
 
 	posts = Posts.find(postsSelector);
 	users = Meteor.users.find({

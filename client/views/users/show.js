@@ -13,8 +13,15 @@ Template.userProfile.helpers({
 	}
 });
 
+var userNote;
 Template.userVote.rendered = function () {
-	//$('.rateit').rateit();
+	$('.raty').raty({
+		path: '/img/raty', 
+		half: true, 
+		click: function(score, evt) {
+			userNote = score;
+		}
+	});
 };
 
 Template.userVote.events({
@@ -23,7 +30,7 @@ Template.userVote.events({
 		Votes.insert({
 			user_id: Meteor.userId(), 
 			gig_id: this._id, 
-			note: $('.rateit').rateit("value")
+			note: userNote
 		}, function (err, id) {
 			if (err) 
 				console.log(err);

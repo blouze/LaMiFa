@@ -3,10 +3,10 @@
 	<div class="row">
 		<div class="container">
 			<div class="pull-right">
-				<a class="btn btn-default btn-sm" href="{{pathFor "gigEdit"}}">
+				<a class="btn btn-warning btn-sm" href="{{pathFor "gigEdit"}}">
 					<i class="fa fa-wrench fa-2x"></i>
 				</a>
-				<a id="remove" class="btn btn-warning btn-sm" href="#">
+				<a id="remove" class="btn btn-danger btn-sm" href="#">
 					<i class="fa fa-times fa-2x"></i>
 				</a>
 			</div>
@@ -15,102 +15,105 @@
 	{{/if}}
 
 	<div class="row">
-		<div class="media col-xs-12">
-			<img src="{{gigPicture}}" alt="" class="img-thumbnail media-object pull-left" style="margin-bottom:12px">
-			<div class="media-body col-xs-12 col-sm-8">
-				<h2 class="media-heading">
-					{{#with artist}}
-					<a href="{{pathFor "artistShow"}}">{{name}}</a><br>
-					{{/with}}
+		<div class="media">
+			<div class="col-xs-12 col-sm-3">
+				<img src="{{gigPicture}}" alt="" class="img-thumbnail img-responsive media-object pull-left" style="margin-bottom:12px">
+			</div>
+			<div class="media-body col-xs-12 col-sm-7">
+				<div class="panel panel-default">
+					<div class="panel-body">
+						<h2 class="media-heading">
+							{{#with artist}}
+							<a href="{{pathFor "artistShow"}}">{{name}}</a>
+							{{/with}}
+						</h2>
+						<blockquote>
+							<p>
+								<i class="fa fa-calendar"></i>&nbsp;
+								{{calendar date}}
+							</p>
+							<div class="media">
+								<img src="{{placeThumbnail}}" alt="Image du profil" class="media-object pull-left"/>
+								<div class="media-body">
+									<h4 class="media-heading">
+										{{#with place}}
+										<a href="{{pathFor "placeShow"}}">{{name}}</a><br>
+										{{/with}}
+									</h4>
+									<small>
+										<i class="fa fa-map-marker"></i>&nbsp;
+										{{shortenedAdress place.address}}
+									</small>
+								</div>
+							</div>
+						</blockquote>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+{{#if userIsPresent}}
+<div class="row">
+	<div class="col-xs-12 col-sm-10">
+		<div class="panel panel-info">
+			<div class="panel-heading">
+				<h2 class="panel-title">
+					<i class="fa fa-map-marker"></i>&nbsp;
+					<strong>Vous y êtes !</strong>
 				</h2>
-				<blockquote>
-					<div class="media">
-						<img src="{{placeThumbnail}}" alt="Image du profil" class="media-object pull-left"/>
-						<div class="media-body">
-							<h4 class="media-heading">
-								{{#with place}}
-								<a href="{{pathFor "placeShow"}}">{{name}}</a><br>
-								{{/with}}
-							</h4>
-							<small>
-								<i class="fa fa-map-marker"></i>&nbsp;
-								{{shortenedAdress place.address}}
-							</small>
-						</div>
-					</div>
+			</div>
+
+			<div class="panel-body">
+				{{#unless currentUser}}
+				Pour votez et vous exprimer,&nbsp;&nbsp;
+				<a class="btn btn-success" id="login" href="#"><i class="fa fa-lg fa-facebook-square">&nbsp;&nbsp;</i>Connectez-vous avec Facebook</a>
+				{{else}}
+				{{#unless isAdmin}}
+				<div class="col-sm-offset-3">
 					<br>
-					<p>
-						<i class="fa fa-calendar"></i>&nbsp;
-						{{calendar date}}
-					</p>
-				</blockquote>
+					{{>userProfile}}
+				</div>
+				{{/unless}}
+				{{/unless}}
 			</div>
 		</div>
 	</div>
+</div>
+{{/if}}
 
-	<br>
-	
-	{{#if userIsPresent}}
-	<br>
-	<div class="row">
-		<div class="container col-sm-12">
-			<div class="panel panel-info">
-				<div class="panel-heading">
-					<h2 class="panel-title">
-						<i class="fa fa-map-marker"></i>&nbsp;
-						<strong>Vous y êtes !</strong>
-					</h2>
-				</div>
-
-				<div class="panel-body">
-					{{#unless currentUser}}
-					Pour votez et vous exprimer,&nbsp;&nbsp;
-					<a class="btn btn-success" id="login" href="#"><i class="fa fa-lg fa-facebook-square">&nbsp;&nbsp;</i>Connectez-vous avec Facebook</a>
-					{{else}}
-					{{#unless isAdmin}}
-					<div class="col-sm-offset-2">
-						<br>
-						{{>userProfile}}
-					</div>
-					{{/unless}}
-					{{/unless}}
-				</div>
-			</div>
+{{#if posts.count}}
+<br>
+<div class="row">
+	<div class="container">
+		<div class="page-header">
+			<h4>Posté par le public :</h4>
+		</div>
+		<div class="list-group">
+			{{#each posts}}
+			{{>post}}
+			{{/each}}
 		</div>
 	</div>
-	{{/if}}
-
-	<br>
-
-	{{#if posts.count}}
-	<br>
-	<div class="page-header">
-		<h4>Commentaires du public :</h4>
-	</div>
-	<div class="list-group">
-		{{#each posts}}
-		{{>post}}
-		{{/each}}
-	</div>
-	{{/if}}
+</div>
+{{/if}}
 </template>
 
 <template name="gigItem">
 	<a class="list-group-item" href="{{pathFor 'gigShow'}}">
-		<div class="row">
-			<div class="media">
-				<div class="media-object col-sm-2 col-xs-3 pull-left">
-					<img src="{{gigThumbnail}}" alt="Image du profil"/>
-				</div>
-				<div class="media-body">
-					<h5 class="media-heading col-sm-6">
-						<strong>{{artist.name}}</strong><br>
-						<small><strong>{{place.name}}</strong>, <i>{{city}}</i></small>
-					</h5>
-					<span class="col-sm-6">
-						<i class="fa fa-calendar"></i>&nbsp;&nbsp;{{calendar date}}
-					</span>
-				</div>
+		<div class="media">
+			<div class="media-object col-sm-2 col-xs-3 pull-left">
+				<img src="{{gigThumbnail}}" alt="Image du profil"/>
+			</div>
+			<div class="media-body">
+				<h5 class="media-heading col-sm-6">
+					<strong>{{artist.name}}</strong><br>
+					<small><strong>{{place.name}}</strong>, <i>{{city}}</i></small>
+				</h5>
+				<span class="col-sm-6">
+					<i class="fa fa-calendar"></i>&nbsp;&nbsp;{{calendar date}}
+				</span>
 			</div>
 		</div>
 	</a>

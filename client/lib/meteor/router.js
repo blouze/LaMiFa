@@ -1,13 +1,13 @@
 Router.configure({
 	layoutTemplate: "layout", 
 	loadingTemplate: "loading", 
-	notFoundTemplate: "notFound",
+	notFoundTemplate: "notFound"
 });
 
 Router.after(function () {
-	console.log(this.route.name);
 	if(this.route.name != "home")
 		$(window).scrollTop(0);
+
 	this.subscribe("user", Meteor.userId());
 });
 

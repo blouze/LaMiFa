@@ -8,7 +8,10 @@ Meteor.publish("user", function (selector, options) {
 	if (options) {
 		if (options.posts) {
 			var userItem = Meteor.users.findOne(selector);
-			var posts = Posts.find({owner: userItem._id});
+			var postsSelector = {
+				owner: userItem._id
+			};
+			var posts = Posts.find(postsSelector);
 			return [user, posts];
 		}
 	}
