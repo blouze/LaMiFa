@@ -17,13 +17,13 @@ Router.map(function () {
 		path: "/", 
 		before: function () {
 			this.mapInit = false;
-		}, 
-		waitOn: function () {
+
 			if (Session.get("userPosition"))
-				Meteor.subscribe("places", Session.get("userPosition"), Session.get("searchRadius"));
+				this.subscribe("places", Session.get("userPosition"), Session.get("searchRadius")).wait();
 
 			if (Meteor.user() && Meteor.user().services && Meteor.user().services.password) {
-				Meteor.subscribe("places");
+				this.subscribe("places");
+				this.subscribe("artists");
 			}
 		}
 	});

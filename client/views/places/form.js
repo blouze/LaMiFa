@@ -12,14 +12,13 @@ Template.placeForm.rendered = function () {
 		initMap({
 			minZoom: 5, 
 			maxZoom: 18, 
-			search: true, 
-			search_qry: location.Label, 
+			search: true
 		});
 		this.mapInit = true;
 	}
 
-	if (location)
-		updatePosition(location);
+	if (this.data.address)
+		searchLocation(this.data.address);
 };
 
 Template.placeForm.events({

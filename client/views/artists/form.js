@@ -26,8 +26,7 @@ Template.artistForm.events({
 			var artistId = this._id;
 			Artists.update({ _id: this._id }, { $set: {
 				name: t.find("#name").value, 
-				facebook_id: t.find("#facebook_id").value, 
-				owner: Meteor.userId()
+				facebook_id: t.find("#facebook_id").value
 			} }, function (err) {
 				if (err) 
 					console.log(err);

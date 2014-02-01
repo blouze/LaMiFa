@@ -24,25 +24,30 @@ initMap = function (options) {
 	map.on("zoomend", function (e) {
 	});
 
-	if (options.search) {
-		search = new L.Control.GeoSearch({
-			showMarker: false, 
-			provider: new L.GeoSearch.Provider.Esri(), 
-			searchLabel: "Rechercher...", 
-			notFoundMessage: "Désolé, pas de résultats pour cette adresse"
-		}).addTo(map);
+	if (options) {
+		if (options.search) {
+			search = new L.Control.GeoSearch({
+				showMarker: true, 
+				provider: new L.GeoSearch.Provider.Esri(), 
+				searchLabel: "Rechercher...", 
+				notFoundMessage: "Désolé, pas de résultats pour cette adresse"
+			}).addTo(map);
 
-		map.on("geosearch_foundlocations", function (loc) {
-			var location = loc.Locations[0];
-			//console.log(location);
-			Session.set("mapSearchLocation", location);
-			if (circle) 
-				circle.setLatLng(location);
-		});
-
-		if (options.search_qry)
-			search.geosearch(options.search_qry);
+			map.on("geosearch_foundlocations", function (loc) {
+				var location = loc.Locations[0];
+				//console.log(location);
+				Session.set("mapSearchLocation", location);
+				if (circle) 
+					circle.setLatLng(location);
+			});
+		}
 	}
+}
+
+
+searchLocation = function (qry) {
+	console.log(qry);
+	search.geosearch(qry);
 }
 
 

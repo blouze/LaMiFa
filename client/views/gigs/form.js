@@ -63,8 +63,6 @@ Template.gigForm.events({
 		var place = Places.findOne({name: t.find("#place").value});
 		var gig = Gigs.findOne({_id: this._id});
 		
-		console.log(gig.owner);
-		return;
 		if (gig) 
 			Gigs.update({_id: this._id}, {
 				$set: {
