@@ -8,14 +8,18 @@ Template.placeForm.helpers({
 });
 
 Template.placeForm.rendered = function () {
-	initMap({
-		minZoom: 5, 
-		maxZoom: 18, 
-		search: true
-	});
+	if (!this.mapInit) {
+		initMap({
+			minZoom: 5, 
+			maxZoom: 18, 
+			search: true, 
+			search_qry: location.Label, 
+		});
+		this.mapInit = true;
+	}
 
 	if (location)
-		markLocation(location);
+		updatePosition(location);
 };
 
 Template.placeForm.events({

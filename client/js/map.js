@@ -1,4 +1,4 @@
-var map, marker, circle, search;
+var map, marker, markers, circle, search;
 
 
 initMap = function (options) {
@@ -6,6 +6,7 @@ initMap = function (options) {
 		map.remove();
 		marker = null;
 		circle = null;
+		search = null;
 	}
 
 	map = L.map("map", options);
@@ -14,6 +15,14 @@ initMap = function (options) {
 		//attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://cloudmade.com">CloudMade</a>',
 		maxZoom: 18, 
 	}).addTo(map);
+
+	markers = new L.MarkerClusterGroup({
+		maxClusterRadius: 20
+	});
+	map.addLayer(markers);
+
+	map.on("zoomend", function (e) {
+	});
 
 	if (options.search) {
 		search = new L.Control.GeoSearch({
@@ -25,50 +34,53 @@ initMap = function (options) {
 
 		map.on("geosearch_foundlocations", function (loc) {
 			var location = loc.Locations[0];
-			console.log(location);
+			//console.log(location);
 			Session.set("mapSearchLocation", location);
 			if (circle) 
 				circle.setLatLng(location);
 		});
+
+		if (options.search_qry)
+			search.geosearch(options.search_qry);
 	}
-}
-
-
-mapLocate = function () {
-	
-	map.locate({
-		setView: true, 
-		maxZoom: 12, 
-		timeout: 1000
-	});
 }
 
 
 updatePosition = function (location) {
 	if (!marker) 
-		markLocation(location);
-	else {
-		marker.setLatLng([location.Y, location.X]);
-		if (circle) 
-			map.fitBounds(circle.getBounds().pad(-0.1));
-	}
+		markPosition(location);
+
+	marker.setLatLng([location.Y, location.X]);
+	if (circle) 
+		map.fitBounds(circle.getBounds().pad(-0.1));
 }
 
 
-markLocation = function (location) {
-
-	if (!location)
-		return;
-
-	marker = L.marker([location.Y, location.X]).addTo(map);
+markPosition = function (location) {
+	var greenMarker = L.AwesomeMarkers.icon({
+		icon: 'user',
+		markerColor: 'green'
+	});
+	marker = L.marker([location.Y, location.X], {icon: greenMarker}).addTo(map);
 
 	if (location.Label) {
-
 		setTimeout(function () {
 			marker.bindPopup(location.Label).openPopup();
 		}, 500);
 
 	}
+}
+
+
+updateLocations = function (places) {
+	if (!map)
+		return;
+
+	markers.clearLayers();
+
+	for (var i = places.length - 1; i >= 0; i--) {
+		markers.addLayer(new L.Marker([places[i].location[1], places[i].location[0]]).bindPopup(places[i].name));
+	};
 }
 
 

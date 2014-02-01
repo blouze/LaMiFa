@@ -92,7 +92,7 @@ if (navigator.geolocation)
 	var watchId = navigator.geolocation.watchPosition(function (position) {
 		Session.set("userPosition", position.coords);
 	}, function () {
-		alert("Désolé, nous n'avons pas pu déterminer votre position :(");
+		console.log("Désolé, nous n'avons pas pu déterminer votre position :(");
 	}, {
 		enableHighAccuracy: true, 
 		timeout           : 30000, 

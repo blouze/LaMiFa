@@ -1,3 +1,12 @@
+Template.userPositionMap.helpers({
+	places: function () {
+		var places = Places.find().fetch();
+		updateLocations(places);
+
+		return Places.find();
+	}
+});
+
 Template.userPositionMap.rendered = function () {
 	if (!this.mapInit) {
 		initMap({
@@ -13,17 +22,17 @@ Template.userPositionMap.rendered = function () {
 		});
 
 		this.mapInit = true;
-
-		var position = Session.get("userPosition");
-		if (position) {
-			updatePosition({
-				X: position.longitude, 
-				Y: position.latitude
-			});
-		}
-
-		updateMobility(Session.get("searchRadius"));
 	}
+
+	var position = Session.get("userPosition");
+	if (position) {
+		updatePosition({
+			X: position.longitude, 
+			Y: position.latitude
+		});
+	}
+
+	updateMobility(Session.get("searchRadius"));
 };
 
 var interval;
