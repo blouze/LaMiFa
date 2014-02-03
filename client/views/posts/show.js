@@ -38,8 +38,8 @@ Template.post.helpers({
 Template.post.events({
 	'click #bonus': function (e, t) {
 		Posts.update({_id: this._id}, {$addToSet: {bonus: Meteor.userId()}});
-			if (err) 
-				console.log(err);
+		if (err) 
+			console.log(err);
 	}, 
 
 	'click #malus': function (e, t) {

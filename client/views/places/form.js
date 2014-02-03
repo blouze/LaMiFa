@@ -1,24 +1,18 @@
 var location;
 
-Template.placeForm.helpers({
-	address: function () {
-		location = Session.get("mapSearchLocation");
-		return location ? location.Label : "";
-	}
-});
-
 Template.placeForm.rendered = function () {
-	if (!this.mapInit) {
-		initMap({
-			minZoom: 5, 
-			maxZoom: 18, 
-			search: true
-		});
-		this.mapInit = true;
-	}
-
-	if (this.data.address)
-		searchLocation(this.data.address);
+	initMap({
+		minZoom: 5, 
+		maxZoom: 18, 
+		search: {
+			callback: function (loc) {
+				location = loc;
+				if (location)
+					markPosition(location);
+			}, 
+			query: this.data.address
+		}
+	});
 };
 
 Template.placeForm.events({
@@ -43,8 +37,7 @@ Template.placeForm.events({
 				name: t.find("#name").value, 
 				location: [location.X, location.Y], 
 				address: location.Label, 
-				facebook_id: t.find("#facebook_id").value, 
-				owner: Meteor.userId()
+				facebook_id: t.find("#facebook_id").value
 			} }, function (err) {
 				if (err) 
 					console.log(err);

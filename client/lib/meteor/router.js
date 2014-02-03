@@ -16,14 +16,12 @@ Router.map(function () {
 	this.route("home", {
 		path: "/", 
 		before: function () {
-			this.mapInit = false;
-
 			if (Session.get("userPosition"))
 				this.subscribe("places", Session.get("userPosition"), Session.get("searchRadius")).wait();
 
 			if (Meteor.user() && Meteor.user().services && Meteor.user().services.password) {
-				this.subscribe("places");
 				this.subscribe("artists");
+				this.subscribe("places");
 			}
 		}
 	});
