@@ -1,5 +1,3 @@
-var pickedDate;
-
 Template.gigForm.helpers({
 	artist: function () {
 		$("#artist").typeahead({
@@ -29,14 +27,16 @@ Template.gigForm.helpers({
 });
 
 Template.gigForm.rendered = function () {
-	$("#date").datepicker({
-		startDate: "today",
-		language: "fr"
-	}).on("changeDate", function(e){
-		pickedDate = e.date;
-	});
-	if (this.data.date)
-		$("#date").datepicker("update", moment.unix(this.data.date).toDate());
+	var dtpOpt = {
+		language: "fr", 
+		minuteStepping: 15
+	}
+	if (this.data.date) 
+		dtpOpt.defaultDate = moment.unix(this.data.date).toDate();
+	else
+		dtpOpt.startDate = "today";
+
+	$('#date').datetimepicker(dtpOpt);
 };
 
 Template.gigForm.events({
@@ -68,7 +68,7 @@ Template.gigForm.events({
 				$set: {
 					artist_id: artist._id, 
 					place_id: place._id, 
-					date: moment(pickedDate).unix(), 
+					date: moment($("#date").data("DateTimePicker").getDate()).unix(), 
 					facebook_id: t.find("#facebook_id").value
 				}
 			}, function (err, id) {
@@ -79,7 +79,7 @@ Template.gigForm.events({
 			});
 		else 
 			Gigs.insert({
-				date: moment(pickedDate).unix(), 
+				date: moment($("#date").data("DateTimePicker").getDate()).unix(), 
 				artist_id: artist._id, 
 				place_id: place._id, 
 				facebook_id: t.find("#facebook_id").value, 

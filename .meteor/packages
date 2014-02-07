@@ -17,7 +17,6 @@ font-awesome-4
 moment
 parsleyjs
 jquery-rateit
-bootstrap-datepicker2
-bootstrap-3-timepicker
 iron-router-progress
 leaflet
+bootstrap3-datetimepicker

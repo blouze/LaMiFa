@@ -14,6 +14,7 @@
     "bootstrap-datepicker2": {},
     "bootstrap-3-timepicker": {},
     "iron-router-progress": {},
-    "leaflet": {}
+    "leaflet": {},
+    "bootstrap-timepicker": {}
   }
 }

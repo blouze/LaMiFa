@@ -16,13 +16,14 @@
       "bootstrap-datepicker2": {},
       "bootstrap-3-timepicker": {},
       "iron-router-progress": {},
-      "leaflet": {}
+      "leaflet": {},
+      "bootstrap-timepicker": {}
     },
     "packages": {
       "bootstrap-3": {
         "git": "https://github.com/mangasocial/meteor-bootstrap-3.git",
-        "tag": "v0.3.7",
-        "commit": "5dd0d142c870647b910be80bc777b96f0dd45e5e"
+        "tag": "v3.1.0-1",
+        "commit": "329dccb08bfc18c635676dea600ac9953162cda9"
       },
       "font-awesome-4": {
         "git": "https://github.com/michaelbishop/meteor-font-awesome-4.git",
@@ -91,8 +92,13 @@
       },
       "leaflet": {
         "git": "https://github.com/bevanhunt/meteor-leaflet.git",
-        "tag": "v0.3.3",
-        "commit": "cf884e462cae08eb3ec777421fa4c74d4850b88a"
+        "tag": "v0.3.4",
+        "commit": "2d2f15b1aafcec6bd6cf248ba0076fa05131cade"
+      },
+      "bootstrap-timepicker": {
+        "git": "https://github.com/BenjaminRH/meteor-bootstrap-timepicker.git",
+        "tag": "v0.1.0",
+        "commit": "fa61edb82752e5c682dbaafd5412f4d29f8b72e0"
       }
     }
   }

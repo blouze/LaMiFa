@@ -54,12 +54,12 @@ moment.lang('fr', {
 		LLLL : "dddd D MMMM YYYY LT"
 	},
 	calendar : {
-		sameDay: "[ce soir]",
-		nextDay: '[demain]',
-		nextWeek: 'dddd [prochain]',
-		lastDay: '[hier]',
-		lastWeek: 'dddd [dernier]',
-		sameElse: 'dddd L'
+		sameDay: "[aujourd'hui à] LT",
+		nextDay: "[demain à] LT",
+		nextWeek: "dddd [prochain à] LT",
+		lastDay: "[hier à] LT",
+		lastWeek: "dddd [dernier]",
+		sameElse: "L [à] LT"
 	},
 	relativeTime : {
 		future : "dans %s",
