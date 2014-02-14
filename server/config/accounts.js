@@ -2,6 +2,7 @@ Accounts.loginServiceConfiguration.remove({
 	service: "facebook"
 });
 
+console.log(process.env.ROOT_URL);
 //if(process.env.ROOT_URL == "http://lamifa.com/"){
 if(process.env.ROOT_URL == "http://local.lamifa.com:3000/"){
 	Accounts.loginServiceConfiguration.insert({

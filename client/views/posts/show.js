@@ -11,7 +11,7 @@ Template.post.helpers({
 		}
 	}, 
 	timeAgo: function () {
-		return moment(this.time).format("DD/MM/YY, HH:mm");
+		return moment(this.time).format("HH:mm, DD/MM/YY");
 	}, 
 	
 	isComment: function () {

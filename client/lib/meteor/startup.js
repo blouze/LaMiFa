@@ -85,18 +85,27 @@ moment.lang('fr', {
     }
 });
 
-Session.set("position", null);
-Session.set("searchRadius", 500);
 
-if (navigator.geolocation)
+
+
+if (navigator.geolocation){
+	Session.set("position", null);
+	Session.set("searchRadius", 500);
+
 	var watchId = navigator.geolocation.watchPosition(function (position) {
+
 		Session.set("userPosition", position.coords);
+		//alert(Session.get("userPosition").accuracy);
+		console.log(Session.get("userPosition"));
 	}, function () {
+
+		alert("Nous n'avons pas pu déterminer votre position.\n\nAssurez-vous d'avoir bien activé la localisation dans les paramètres de votre appareil.");
 		console.log("Désolé, nous n'avons pas pu déterminer votre position :(");
 	}, {
+		timeout: 30000, 
 		enableHighAccuracy: true, 
-		timeout           : 30000, 
-		maximumAge        : 0
+		maximumAge: Infinity
 	});
+}
 else
 	alert("La géolocalisation n'est pas supportée par votre navigateur.");

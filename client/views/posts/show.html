@@ -1,19 +1,20 @@
 <template name="post">
-	<div class="media">
-		<div class="media-object pull-left">
-			<img src="{{ownerPicture}}" alt="" />
-		</div>
-		<div class="media-body col-sm-6">
-			<blockquote>
+	<div class="list-group-item">
+		<div class="media">
+			<div class="media-object pull-left">
+				<img src="{{ownerPicture}}" alt="" />
+			</div>
+			<div class="media-body">
 				{{#if isComment}}
-				{{content}}
+				<p>{{content}}</p>
 				{{/if}}
 				{{#if isPicture}}
 				<img src="{{content}}" alt="" class="img-responsive img-thumbnail">
 				{{/if}}
-				<small class="">
+
+				<small>
 					{{#with owner}}
-					<a href="{{pathFor 'userShow'}}"><i>{{profile.name}}</i></a>, {{timeAgo}}
+					<p><a href="{{pathFor 'userShow'}}"><i>{{profile.name}}</i></a>, {{timeAgo}}</p>
 					{{/with}}
 					{{#unless userHasVoted}}
 					{{/unless}}
@@ -22,7 +23,6 @@
 				{{#if currentUser}}
 				{{#unless isAdmin}}
 				{{#unless userHasVoted}}
-				<br>
 				<button id="bonus" type="button" class="btn btn-sm btn-default">&nbsp;<i class="fa fa-thumbs-o-up"></i>&nbsp;</button>
 				<button id="malus" type="button" class="btn btn-sm btn-default">&nbsp;<i class="fa fa-thumbs-o-down"></i>&nbsp;</button>
 				{{/unless}}
@@ -41,7 +41,7 @@
 				</div>
 				{{/unless}}
 				{{/if}}
-			</blockquote>
+			</div>
 		</div>
 	</div>
 </template>

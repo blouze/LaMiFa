@@ -1,3 +1,25 @@
+Meteor.publish("placesOnMap", function (boxBounds) {
+	if (boxBounds) {
+		var place_ids = _.pluck(
+			Places.find({
+				location: {
+					$geoWithin: {
+						$box: boxBounds
+					}
+				}
+			}).fetch(), "_id");
+
+		var gig_ids = _.pluck(Gigs.find({place_id: {$in: place_ids}}).fetch(), "_id");
+		var artist_ids = _.pluck(Gigs.find({_id: {$in: gig_ids}}).fetch(), "artist_id");
+
+		var places = Places.find({_id: {$in: place_ids}});
+		var gigs = Gigs.find({_id: {$in: gig_ids}});
+		var artists = Artists.find({_id: { $in: artist_ids }});
+
+		return [places, gigs, artists];
+	}
+});
+
 Meteor.publish("places", function (position, radius) {
 	var place_ids;
 

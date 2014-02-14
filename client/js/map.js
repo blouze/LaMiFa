@@ -21,9 +21,6 @@ initMap = function (options) {
 	});
 	map.addLayer(markers);
 
-	map.on("zoomend", function (e) {
-	});
-
 	if (options) {
 		if (options.search) {
 			search = new L.Control.GeoSearch({
@@ -49,6 +46,12 @@ initMap = function (options) {
 			if (options.search.query) {
 				search.geosearch(options.search.query);
 			}
+		}
+
+		if (options.onZoomEnd) {
+			map.on("zoomend", function (e) {
+				options.onZoomEnd.call(map, e);
+			});
 		}
 	}
 }

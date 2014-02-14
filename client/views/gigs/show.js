@@ -28,7 +28,20 @@ Template.gigShow.helpers({
 	}, 
 
 	userIsPresent: function () {
-		return true;
+		var position = Session.get("userPosition");
+		if(position) {
+			var place = Places.findOne();
+			return haversine({
+				longitude: position.longitude, 
+				latitude: position.latitude
+			}, {
+				longitude: place.location[0], 
+				latitude: place.location[1]
+			},{
+				unit: "km", 
+				threshold: 0.1
+			});
+		}
 	}
 });
 

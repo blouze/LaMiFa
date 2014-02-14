@@ -1,9 +1,12 @@
 Template.userPositionMap.helpers({
 	places: function () {
-		var places = Places.find().fetch();
+		var place_ids = _.pluck(Places.find().fetch(), "_id");
+		var gig_ids = _.pluck(Gigs.find({place_id: {$in: place_ids}}).fetch(), "_id");
+		
+		place_ids = _.pluck(Gigs.find({_id: {$in: gig_ids}}).fetch(), "place_id");
+		var places = Places.find({_id: {$in: place_ids}}).fetch();
 		updateLocations(places);
-
-		return Places.find();
+		return Places.find({_id: {$in: place_ids}});
 	}
 });
 
@@ -19,6 +22,12 @@ Template.userPositionMap.rendered = function () {
 			scrollWheelZoom: false, 
 			doubleClickZoom: false, 
 			boxZoom: false, 
+			onZoomEnd: function () {
+				var bounds = this.getBounds();
+				var sw = bounds.getSouthWest();
+				var ne = bounds.getNorthEast();
+				Session.set("mapBounds", [[sw.lng, sw.lat], [ne.lng, ne.lat]]);
+			}, 
 		});
 
 		this.mapInit = true;
@@ -35,11 +44,9 @@ Template.userPositionMap.rendered = function () {
 	updateMobility(Session.get("searchRadius"));
 };
 
-var interval;
-
 Template.userPositionMap.events({
 	"click #plus": function (e, t) {
-		Session.set("searchRadius", Session.get("searchRadius") * 1.5);
+		Session.set("searchRadius", Math.min(Session.get("searchRadius") * 1.5, 100000));
 		updateMobility(Session.get("searchRadius"));
 	}, 
 
@@ -49,35 +56,17 @@ Template.userPositionMap.events({
 	}
 });
 
-Template.home.rendered = function () {
-};
-
 Template.home.helpers({
 	userPosition: function () {
 		return Session.get("userPosition");
 	}, 
 
-	matchGig: function () {
-		return;
-		var position = Session.get("userPosition");
-		if (!position)
-			return;
-
-		var place = Places.findOne({
-			location: {
-				$near: [position.longitude, position.latitude], 
-				$maxDistance: 100
-			}
-		});
-
-		if (place)
-			return Gigs.findOne({
-				place_id: place._id
-			});
-	}, 
-
 	gigs: function () {
 		return Gigs.find({}, {sort: { date: 1 }});
+	}, 
+
+	matchGig: function () {
+		return null;
 	}, 
 
 	artists: function () {
